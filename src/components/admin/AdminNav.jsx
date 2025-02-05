@@ -7,7 +7,7 @@ function AdminNav() {
         <>
             <nav id="panelnav">
                 <div class="panellogo">
-                    <img src="../src/assets/Logo.png" alt="Logo"/>
+                    <img src="/assets/Logo.png" alt="Logo"/>
                 </div>
                 <div class="paneltext">
                     <h1>BE BOLD BE TIMELESS</h1>

@@ -17,7 +17,7 @@ function Navbar({ setShowLogin }) {
         <>
             <nav id="LoginNav">
                 <div class="logo-box">
-                    <img src="/src/assets/Logo.png" alt="" />
+                    <img src="/assets/Logo.png" alt="" />
                 </div>
                 <div class="nav-links">
                     <a href="/register" onClick={(e) => { handleNavigation(e, '/register') }}>Sign Up</a>

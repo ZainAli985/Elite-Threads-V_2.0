@@ -17,15 +17,15 @@ function HomeNav() {
         <>
             <nav id="nav">
                 <div class="logo">
-                    <img src="/src/assets/Logo.png" alt="Logo" onClick={navigateTrackOrder} />
+                    <img src="/assets/Logo.png" alt="Logo" onClick={navigateTrackOrder} />
                 </div>
                 <div class="essential-box">
                     <div class="search">
                         <input type="search" name="" id="" placeholder="Search For Your Look" />
-                        <img src="/src/assets/search-logo.png" alt="Search Logo" srcset="" />
+                        <img src="/assets/search-logo.png" alt="Search Logo" srcset="" />
                     </div>
                     <div class="cart">
-                        <img src="/src/assets/cart-logo.png" alt="Cart-Logo" onClick={navigateCart} />
+                        <img src="/assets/cart-logo.png" alt="Cart-Logo" onClick={navigateCart} />
                     </div>
                 </div>
             </nav>

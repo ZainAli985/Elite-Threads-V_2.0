@@ -12,10 +12,6 @@ import { CreateCartProducts, decreaseCartQuantity, DelteCartProducts, increaseCa
 import { CheckedOutProducts, OrderStatus, PlaceOrder, TrackOrder, UserOrders } from '../controllers/OrderHandling.js';
 import { upload } from '../middlewares/multer-upload-middleware.js';
 
-// Define your routes here
-router.get('*', (req,res)=>{
-    res.send('HELLOOOOOOOO HOW ARE YOU ZAIN YOUR WORK PAYED OFF')
-})
 
 // Login 
 router.post('/login', login);
@@ -29,7 +25,6 @@ router.post('/adminregister', AdminRegister)
 
 // Protected Routes 
 router.get('/home',authenticateToken, (req, res) => {
-    
     res.status(200).json({
         message: 'Welcome to the Home Page! You are authorized to view this page.'
     });

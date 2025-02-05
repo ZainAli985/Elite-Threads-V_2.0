@@ -19,7 +19,7 @@ function Category() {
           onClick={() => handleCategoryClick("EXECUTIVE SERIES")}
         >
           <div className="img">
-            <img src="/src/assets/cat-1.png" alt="Category Picture" />
+            <img src="/assets/cat-1.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>EXECUTIVE SERIES</h2>
@@ -30,7 +30,7 @@ function Category() {
           onClick={() => handleCategoryClick("CEO COLLECTION")}
         >
           <div className="img">
-            <img src="/src/assets/cat-2.png" alt="Category Picture" />
+            <img src="/assets/cat-2.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>CEO COLLECTION</h2>
@@ -41,7 +41,7 @@ function Category() {
           onClick={() => handleCategoryClick("ELITE EXCLUSIVE")}
         >
           <div className="img">
-            <img src="/src/assets/cat-3.png" alt="Category Picture" />
+            <img src="/assets/cat-3.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>ELITE EXCLUSIVE</h2>
@@ -52,7 +52,7 @@ function Category() {
           onClick={() => handleCategoryClick("TAILORED PRESTIGED")}
         >
           <div className="img">
-            <img src="/src/assets/cat-4.png" alt="Category Picture" />
+            <img src="/assets/cat-4.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>TAILORED PRESTIGED</h2>
@@ -63,7 +63,7 @@ function Category() {
           onClick={() => handleCategoryClick("TIMELESS CLASSICS")}
         >
           <div className="img">
-            <img src="/src/assets/cat-5.png" alt="Category Picture" />
+            <img src="/assets/cat-5.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>TIMELESS CLASSICS</h2>
@@ -74,7 +74,7 @@ function Category() {
           onClick={() => handleCategoryClick("ROYAL HERITAGE")}
         >
           <div className="img">
-            <img src="/src/assets/cat-6.png" alt="Category Picture" />
+            <img src="/assets/cat-6.png" alt="Category Picture" />
           </div>
           <div className="txt">
             <h2>ROYAL HERITAGE</h2>

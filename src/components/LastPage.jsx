@@ -14,11 +14,11 @@ function LastPage(){
     return(
         <>
         <div className="last-header">
-            <img src="../src/assets/logo.png" alt="LOGO" />
+            <img src="/assets/Logo.png" alt="LOGO" />
         </div>
         <div className="outro-content">
             <div className="check-mark">
-                <img src="../src/assets/checkmark.png" alt="CheckMark" />
+                <img src="/assets/checkmark.png" alt="CheckMark" />
             </div>
             <div className="outro-text">
                 <h2>ORDER PLACED SUCCESSFULLY</h2>

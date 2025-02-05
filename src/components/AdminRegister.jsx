@@ -25,10 +25,10 @@ function AdminRegisterForm() {
                 });
                 if (response.ok) {
                     const newUser = await response.json();
-                    
-                  const adminInfo = newUser.adminInfo;
 
-                  localStorage.setItem('adminInfo', JSON.stringify(adminInfo));
+                    const adminInfo = newUser.adminInfo;
+
+                    localStorage.setItem('adminInfo', JSON.stringify(adminInfo));
 
                     // Clear form fields after successful registration
                     setUsername('');
@@ -52,11 +52,11 @@ function AdminRegisterForm() {
 
     return (
         <>
-        <AdminNav />
+            <AdminNav />
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
-                        <img src="/src/assets/LoginIcon.png" alt="" />
+                        <img src="/assets/LoginIcon.png" alt="" />
                     </div>
                     <h1>REGISTER NOW</h1>
                 </div>
@@ -89,19 +89,19 @@ function AdminRegisterForm() {
                     />
                 </form>
                 <h3 style={{
-    padding: '20px', 
-    backgroundColor: '#f70101', 
-    color: '#fadd8a', 
-    border: '1px solid #f70101', 
-    borderRadius: '5px', 
-    textAlign: 'center', 
-    fontWeight: 'bold',
-    margin: '20px auto',
-    width: 'fit-content',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
-}}>
-    ONLY FOR ADMINS
-</h3>
+                    padding: '20px',
+                    backgroundColor: '#f70101',
+                    color: '#fadd8a',
+                    border: '1px solid #f70101',
+                    borderRadius: '5px',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    margin: '20px auto',
+                    width: 'fit-content',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+                }}>
+                    ONLY FOR ADMINS
+                </h3>
             </div>
 
             {/* Notification */}

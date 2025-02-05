@@ -58,7 +58,7 @@ function AdminLoginForm() {
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
-                        <img src="/src/assets/LoginIcon.png" alt="Login Icon" />
+                        <img src="/assets/LoginIcon.png" alt="Login Icon" />
                     </div>
                     <h1>Log In</h1>
                 </div>

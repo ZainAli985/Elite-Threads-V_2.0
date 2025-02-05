@@ -2,9 +2,10 @@ import express from 'express';
 import connectDB from '../config/Dbconnect.js';
 import cors from 'cors';
 import router from '../routes/router.js';
+import { configDotenv } from 'dotenv';
 
 const app = express();
-const port = 8080;
+const port = process.env.PORT;
 
 // Middleware
 app.use(cors());

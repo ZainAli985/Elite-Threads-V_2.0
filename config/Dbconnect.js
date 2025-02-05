@@ -1,9 +1,12 @@
-import mongoose from 'mongoose';
-// Connect to MongoDB
+import mongoose from 'mongoose'
+import pkg from 'dotenv';
+const { config } = pkg;
+config(); 
+
 
 async function connectDB() {
     try {
-        await mongoose.connect('mongodb+srv://zain20061008:oviStHBt1WGgOlf9@elite-threads.o07xq.mongodb.net/elite-threads', {
+        await mongoose.connect(process.env.MONGO_URL, {
         });
         console.log('Connected to MongoDB');
     } catch (err) {

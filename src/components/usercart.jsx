@@ -166,9 +166,6 @@ const UserCart = () => {
         SendCheckedOutProducts(selectedProducts);
         navigate('/checkout');
     };
-    // console.log(cartProducts);  //REMOVE LATER  ---------------
-    // console.log(checkedProducts); //REMOVE LATER---------------
-    // console.log(selectedProducts); //REMOVE LATER---------------
     return (
         <>
         <div className="user-cart">
@@ -193,7 +190,7 @@ const UserCart = () => {
                                 </span>
                             </div>
                             <div className="select-delete-container">
-                                <img src="../src/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
+                                <img src="/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
                                 <input
                                     type="checkbox"
                                     id="product-check"

@@ -5,14 +5,14 @@ import HomeNav from "./HomeNav";
 import Category from "./CategoryBox";
 
 // Importing Banner Images 
-import covertext from "../assets/covertext.png";
-import covertext2 from "../assets/covertext2.png";
-import covertext3 from "../assets/covertext3.png";
-import covertext4 from "../assets/covertext4.png";
-import model1 from "../assets/model1.png";
-import model2 from "../assets/model2.png";
-import model3 from "../assets/model3.png";
-import model4 from "../assets/model4.png";
+import covertext from "/assets/covertext.png";
+import covertext2 from "/assets/covertext2.png";
+import covertext3 from "/assets/covertext3.png";
+import covertext4 from "/assets/covertext4.png";
+import model1 from "/assets/model1.png";
+import model2 from "/assets/model2.png";
+import model3 from "/assets/model3.png";
+import model4 from "/assets/model4.png";
 
 function HomeBanner() {
     const navigate = useNavigate();

@@ -44,7 +44,7 @@ function LoginForm() {
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
-                        <img src="/src/assets/LoginIcon.png" alt="" />
+                        <img src="/assets/LoginIcon.png" alt="" />
                     </div>
                     <h1>Log In</h1>
                 </div>

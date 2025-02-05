@@ -64,7 +64,7 @@ const Products = () => {
                                 <h2>${product.price}/-</h2>
                                 <img
                                     className="cart-logo"
-                                    src="../src/assets/cart-logo.png"
+                                    src="/assets/cart-logo.png"
                                     alt="Add to cart"
                                     onClick={() => handleAddToCart(product.name)}
                                 />

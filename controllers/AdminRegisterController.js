@@ -1,6 +1,10 @@
 import Admin from "../models/admin-model.js";
-import jwt from 'jsonwebtoken'; // Make sure you import jwt
-const JWT_SECRET = 'secret'; // Set your JWT secret
+import jwt from 'jsonwebtoken'; 
+import pkg from 'dotenv';
+const { config } = pkg;
+config(); 
+
+const JWT_SECRET = process.env.JWT_SECRET_KEY; 
 
 // Register Controller
 

@@ -22,7 +22,7 @@ function AdminInfo() {
             <h1>ADMIN'S PROFILE</h1>
             <div className="info-container">
                 <div className="userlogo">
-                    <img src="../src/assets/userlogo.png" alt="User Logo" />
+                    <img src="/assets/userlogo.png" alt="User Logo" />
                 </div>
                 <div className="infoboxes">
                     <div className="infobox">

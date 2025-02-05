@@ -14,15 +14,15 @@ function ProductNav(catgName) {
         <>
             <nav id="nav">
                 <div class="logo">
-                    <img src="/src/assets/Logo.png" alt="Logo" />
+                    <img src="/assets/Logo.png" alt="Logo" />
                 </div>
                 <div class="essential-box">
                     <div class="search">
                         <input type="search" name="" id="" placeholder="Search For Your Look" />
-                        <img src="/src/assets/search-logo.png" alt="" srcset="" />
+                        <img src="/assets/search-logo.png" alt="" srcset="" />
                     </div>
                     <div class="cart">
-                        <img src="/src/assets/cart-logo.png" alt=""  onClick={navigateCart}/>
+                        <img src="/assets/cart-logo.png" alt=""  onClick={navigateCart}/>
                     </div>
                 </div>
             </nav>

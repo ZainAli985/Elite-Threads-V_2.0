@@ -1,6 +1,10 @@
 import User from "../models/user-model.js";
-import jwt from 'jsonwebtoken'; // Make sure you import jwt
-const JWT_SECRET = 'secret'; // Set your JWT secret
+import jwt from 'jsonwebtoken'; 
+import pkg from 'dotenv';
+const { config } = pkg;
+config(); 
+
+const JWT_SECRET = process.env.JWT_SECRET_KEY; 
 
 // Register Controller
 
@@ -41,7 +45,7 @@ export const login = async (req, res) => {
             username: user.username
         };
 
-        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+        const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '5h' });
 
         res.status(200).json({
             message: 'Login successful',
