@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+body{
+    /* background: linear-gradient(170deg, #050F26, #06122F, #0A1F4F, #12378C); */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#nav{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 100%;
+    z-index: +1;
+    background-color: wheat;
+}
+
+.logo{
+    /* border: 2px solid green; */
+    /* height: 15vw; */
+    width: auto;
+    display: flex;
+}
+
+.logo img{
+    width: 20%;
+    position: absolute;
+}
+
+.essential-box{
+    display: flex;
+    /* border: 2px solid white; */
+    align-items: center;
+}
+
+.search{
+    /* border: 2px solid greenyellow; */
+    display: flex;
+    align-items: center;
+    padding: 1vw;
+    font-family: "Junge", serif;
+}
+
+.search input{
+    border: 2px solid white;
+    outline: none;
+    padding: 1vw;
+    margin: 1vw;
+    border-radius: 0.5vw;
+    width: 20vw;
+    font-family: "Junge", serif;
+    background: transparent;
+    color: white;
+}
+.search input::placeholder{
+    color: white;
+    font-family: "Junge", serif;
+    font-size: 1vw;
+}
+.search img{
+    height: auto;
+    width: 2vw;
+}
+.search img:hover{
+    cursor: pointer;
+}
+
+.cart{
+    /* border: 2px solid purple; */
+    margin: 0.5vw;
+    padding: 0.5vw;
+}
+.cart img{
+    height: auto;
+    width: 2.5vw;
+}
+.cart img:hover{
+    cursor: pointer;
+}
+
+.product-header{
+    /* border: 2px solid blue; */
+    display: flex;
+    padding-top: 15vw;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    font-family: "Junge", serif;
+}
+.product-header h1{
+    margin: 0;
+    font-size: 3.5vw;
+    color: #847447;
+}
+
+.hr{
+    width: 100%;
+    height: 3px;
+    position: absolute;
+    margin:0;
+    background-color: #847447;
+}

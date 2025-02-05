@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+
+.cat-parent {
+    display: flex;
+    flex-direction: column;
+    background: linear-gradient(170deg, #050F26, #06122F, #0A1F4F, #12378C);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #a18e5c;
+    font-family: "Junge", serif;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+.cat-parent h1{
+    font-size: 5vw;
+}
+
+h1 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.cat-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+/* For larger screens (Desktop) - 3 cards in a row */
+.cat-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #0A142D;
+    border-radius: 1rem;
+    overflow: hidden;
+    width: calc(33% - 1rem); /* 3 cards in a row, with spacing */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease-in-out;
+}
+
+.cat-box:hover {
+    transform: translateY(-10px); /* Hover effect */
+}
+
+.img {
+    width: 100%;
+    /* height: 200px; */
+    overflow: hidden;
+}
+
+.img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 3px solid #a18e5c;
+}
+
+.txt {
+    text-align: center;
+    padding: 1rem;
+}
+
+.txt h2 {
+    font-size: 2vw;
+    color: #a18e5c;
+    margin: 0;
+}
+
+/* Responsive Design: For mobile devices */
+@media screen and (max-width: 768px) {
+    .cat-parent {
+        padding: 1rem;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .cat-boxes {
+        overflow-x: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        gap: 1rem;
+    }
+
+    .cat-box {
+        width: 200px; /* Make cards smaller to fit horizontally */
+        flex-shrink: 0;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .txt h2 {
+        font-size: 1rem;
+    }
+}

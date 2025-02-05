@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+body{
+    background: linear-gradient(170deg, #050F26, #06122F, #0A1F4F, #12378C);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#nav{
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: space-between;
+}
+
+.logo{
+    /* border: 2px solid green; */
+    height: 15vw;
+    width: auto;
+    display: flex;
+}
+
+.logo img{
+    width: 100%;
+    object-fit: cover;
+}
+
+.essential-box{
+    display: flex;
+    /* border: 2px solid white; */
+    align-items: center;
+}
+
+.search{
+    /* border: 2px solid greenyellow; */
+    display: flex;
+    align-items: center;
+    padding: 1vw;
+    font-family: "Junge", serif;
+}
+
+.search input{
+    border: 2px solid white;
+    outline: none;
+    padding: 1vw;
+    margin: 1vw;
+    border-radius: 0.5vw;
+    width: 20vw;
+    font-family: "Junge", serif;
+    background: transparent;
+    color: white;
+}
+.search input::placeholder{
+    color: white;
+    font-family: "Junge", serif;
+    font-size: 1vw;
+}
+.search img{
+    height: auto;
+    width: 2vw;
+}
+.search img:hover{
+    cursor: pointer;
+}
+
+.cart{
+    /* border: 2px solid purple; */
+    margin: 0.5vw;
+    padding: 0.5vw;
+}
+.cart img{
+    height: auto;
+    width: 2.5vw;
+}
+.cart img:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,203 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+
+/* *{
+    color: aliceblue;
+    } */
+.checkout-header {
+    /* border: 2px solid red; */
+    color: aliceblue;
+    font-family: Junge, serif;
+    padding: 2vw;
+    color: #E3CF99;
+    margin-top: 2vw;
+
+}
+
+.checkout-header h1 {
+    font-size: 5vw;
+}
+
+.checkout-container {
+    /* border: 2px solid red; */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: end;
+    align-items: center;
+    padding: 2vw;
+    font-family: Junge, serif;
+}
+
+.address-container {
+    /* border: 2px solid saddlebrown; */
+    display: flex;
+    flex-direction: column;
+    font-family: Jnuge, serif;
+    padding: 2vw;
+    background-color: #0A142D;
+    color: #948352;
+    border-radius: 2vw;
+    font-family: Junge, serif;
+
+}
+
+.address-container h3 {
+    font-size: 3vw;
+}
+
+.shipping-details-form {
+    display: grid;
+    /* border: 2px solid green; */
+    padding: 1vw;
+    grid-template-columns: 1fr 1fr;
+    gap: 1vw;
+}
+
+.shipping-details-form input {
+    font-family: Junge, serif;
+    padding: 1vw;
+    font-size: 2vw;
+    border-radius: 1vw;
+    outline: none;
+    border: none;
+    background: linear-gradient(130deg, #7D7254, #A79970, #B9A97C, #E3CF99);
+    color: white;
+    width: 20vw;
+    text-align: center;
+}
+
+.shipping-details-form input::placeholder {
+    color: white;
+}
+
+.shipping-details-form textarea {
+    font-family: Junge, serif;
+    padding: 1vw;
+    font-size: 2vw;
+    border-radius: 1vw;
+    outline: none;
+    grid-column: span 2;
+    width: 30vw;
+    height: 10vw;
+    background: linear-gradient(130deg, #7D7254, #A79970, #B9A97C, #E3CF99);
+    color: white;
+}
+
+.shipping-details-form textarea::placeholder {
+    color: white;
+}
+
+.total-container {
+    display: flex;
+    /* border: 2px solid red; */
+    flex-direction: column;
+    gap: 2vw;
+    color: whitesmoke;
+    align-items: center;
+    padding: 3vw;
+    background-color: #0A142D;
+    border-radius: 2vw;
+}
+
+.charges {
+    display: flex;
+    justify-content: center;
+    border-bottom: 2px solid #948352;
+    width: 100%;
+    padding: 1vw;
+    font-size: 2vw;
+}
+
+.net-total {
+    border-bottom: 2px solid #948352;
+    display: flex;
+    align-items: flex-end;
+    height: 100%;
+    font-size: 2vw;
+}
+
+.place-order-btn {
+    grid-column: span 2;
+    margin-right: 4.5vw;
+    margin-top: -2vw;
+}
+
+.place-order-btn button {
+    font-family: Junge, serif;
+    font-size: 2vw;
+    border-radius: 1.2vw;
+    padding: 1.5vw;
+    outline: none;
+    border: none;
+    background: linear-gradient(130deg, #7D7254, #A79970, #B9A97C, #E3CF99);
+    color: white;
+    cursor: pointer;
+}
+
+.place-order-btn button:hover {
+    background: linear-gradient(130deg, #E3CF99, #B9A97C, #A79970, #7D7254);
+}
+
+.notification-div {
+    color: white;
+    position: fixed;
+    top: 10%;
+    right: -100%; /* Start position off the screen */
+    transform: translateY(-50%);
+    height: 5vw;
+    width: vw;
+    border-radius: 1.2vw;
+    background-color: #7D7254;
+    font-family: Junge, serif;
+    border: none;
+    padding: 1vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    font-size: 1.2vw;
+    animation: slideIn 1s forwards, slideOut 0.5s forwards 7s; 
+}
+
+/* Slide-in effect */
+@keyframes slideIn {
+    from {
+        right: -100%; /* Start off the right side */
+    }
+    to {
+        right: 5%; /* Slide into view from the right */
+    }
+}
+
+/* Slide-out effect */
+@keyframes slideOut {
+    from {
+        right: 5%;
+    }
+    to {
+        right: -100%; /* Slide out of view */
+    }
+}
+
+/* Loading Screen */
+.loading-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Error Message */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+}

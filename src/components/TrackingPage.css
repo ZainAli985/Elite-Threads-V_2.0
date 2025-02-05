@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+.tracking-header{
+    display: flex;
+    /* border: 2px solid red; */
+    justify-content: space-between;
+    font-family: Junge, serif;
+}
+.tracking-header img{
+    /* border: 2px solid salmon; */
+    height: 20vw;
+    cursor: pointer;
+}
+
+.net-total-container{
+    /* border: 2px solid rebeccapurple; */
+    position: absolute;
+    right: 0;
+    height: 10vw;
+    width: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #948352;
+    background-color: black;
+}
+
+.net-total-container h2{
+    font-size: 3vw;
+}
+.net-total-container sub{
+    font-size: 1vw;
+}
+
+/* Orders Boxes  */
+
+.user-orders{
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    padding: 2vw;
+    /* border: 2px solid red; */
+}
+.user-orders h1{
+    font-family: Junge, serif;
+    font-size: 3vw;
+    color: #948352;
+    padding: 2vw 2vw 2vw 5vw;
+    font-weight: 200;
+}
+.orders-container{
+    display: flex;
+    /* border: 2px solid saddlebrown; */
+    padding: 2vw;
+    background-color: #0A142D;
+    width: 90%;
+    margin: auto;
+    border-radius: 2vw;
+    color: #948352;
+    font-family: Junge, serif;
+
+}
+.p-img{
+    /* border: 2px solid green; */
+    height: 15vw;
+}
+.p-img img{
+    object-fit: cover;
+    height: 100%;
+}
+.p-details{
+    /* border: 2px solid saddlebrown; */
+    display: flex;
+    flex-direction: column;
+    padding-left: 5vw;
+    gap: 2vw;
+    justify-content: center;
+}
+.p-details span{
+    font-size: 2vw;
+    font-weight: 200;
+}
+
+.status-container{
+    display: inline-flex;
+    /* border: 2px solid white; */
+    justify-content: center;
+    align-items: center;
+    padding-left: 22vw;
+}
+.status-container h2{
+    padding: 1vw;
+    gap: 2vw;
+    font-size: 2vw;
+}
+#No-orders{
+    font-size: 5vw;
+    font-weight: 200;
+    font-family: Junge, serif;
+    color: #948352;
+    text-align: center;
+    padding: 2vw;
+}
