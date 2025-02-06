@@ -1,10 +1,8 @@
 import express from 'express';
 const router = express.Router();
-import jwt from 'jsonwebtoken';
-const JWT_SECRET = 'secret';
+
 
 import {authenticateToken} from '../middlewares/auth.js'
-import multer from 'multer';
 import { CreateProduct,  deleteProducts, getAdminProducts, getProducts } from '../controllers/ProductController.js';
 import { register, login } from '../controllers/RegisterController.js';
 import { Adminlogin, AdminRegister } from '../controllers/AdminRegisterController.js';
@@ -17,6 +15,9 @@ import { upload } from '../middlewares/multer-upload-middleware.js';
 router.post('/login', login);
 router.post('/register', register);
 
+router.get('/', (req, res)=>{
+    res.send('HELOO PC SERVER')
+})
 
 
 // Admin Register/Login 

@@ -21,7 +21,7 @@ function AdminLoginForm() {
 
         const user = { email, password, admin_id };
         try {
-            const response = await fetch('http://localhost:3000/adminlogin', {
+            const response = await fetch('http://127.0.0.1:3000/adminlogin', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

@@ -2,22 +2,32 @@ import express from 'express';
 import connectDB from '../config/Dbconnect.js';
 import cors from 'cors';
 import router from '../routes/router.js';
-import { configDotenv } from 'dotenv';
+import path from 'path'
 
 const app = express();
 const port = process.env.PORT;
 
-// Middleware
-app.use(cors());
+
+// Middle Ware
+
+app.use(cors({
+    origin: '*',  
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+
+
+
 app.use(express.json());
 
 // Router
 app.use(router);
-// app.use('/api/createproduct', createproduct);
+
 
 
 connectDB();
 
-app.listen(port, () => {
+app.listen(port, '0.0.0.0', () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);
 });

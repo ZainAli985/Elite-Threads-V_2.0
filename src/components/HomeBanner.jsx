@@ -26,7 +26,7 @@ function HomeBanner() {
 
         try {
             // Validate token with the backend
-            const response = await fetch('http://localhost:3000/home', {
+            const response = await fetch('http://127.0.0.1:3000/home', {
                 headers: {
                     method: 'GET',
                     Authorization: `Bearer ${token}`,

@@ -15,7 +15,7 @@ const UserCart = () => {
     const fetchCart = async () => {
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://localhost:3000/getusercart', {
+            const response = await fetch('http://127.0.0.1:3000/getusercart', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ const UserCart = () => {
     const deleteProduct = async (productName, price) => {
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://localhost:3000/deletecartproduct', {
+            const response = await fetch('http://127.0.0.1:3000/deletecartproduct', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +68,7 @@ const UserCart = () => {
 
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch(`http://localhost:3000/${action}qty`, {
+            const response = await fetch(`http://127.0.0.1:3000/${action}qty`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -127,7 +127,7 @@ const UserCart = () => {
     const SendCheckedOutProducts = async (selectedProducts) => {  
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://localhost:3000/checkout', {
+            const response = await fetch('http://39.52.37.193:3000/checkout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

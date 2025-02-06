@@ -8,7 +8,7 @@ const AdminProducts = () => {
   // Fetch products from the API
   const getProducts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/getAdminproducts");
+      const response = await fetch("http://127.0.0.1:3000/getAdminproducts");
       const data = await response.json();
       setProducts(data.products || []); // Set products from the API response
     } catch (e) {
@@ -28,7 +28,7 @@ const AdminProducts = () => {
   // Handle product deletion
   const deleteProduct = async (productName) => {
     try {
-      const response = await fetch("http://localhost:3000/deleteproducts", {
+      const response = await fetch("http://127.0.0.1:3000/deleteproducts", {
         method: "POST", // or "DELETE", depending on your backend setup
         headers: {
           "Content-Type": "application/json",

@@ -27,7 +27,7 @@ function CheckoutBox() {
         
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch('http://localhost:3000/placeorder', {
+            const response = await fetch('http://127.0.0.1:3000/placeorder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +55,7 @@ function CheckoutBox() {
     async function getNetTotal() {
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch('http://localhost:3000/placeorder', {
+            const response = await fetch('http://127.0.0.1:3000/placeorder', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

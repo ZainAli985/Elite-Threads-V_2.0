@@ -6,7 +6,7 @@ const ProductList = () => {
     // Fetch products from API
     const loadProducts = async () => {
         try {
-            const response = await fetch("http://localhost:3000/products");
+            const response = await fetch("http://127.0.0.1:3000/products");
             const data = await response.json();
 
             if (response.ok) {

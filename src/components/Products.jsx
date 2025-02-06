@@ -11,7 +11,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`http://localhost:3000/getproducts/${categoryName}`);
+                const response = await fetch(`http://127.0.0.1:3000/getproducts/${categoryName}`);
                 const data = await response.json();
                 setProducts(data.products);
             } catch (err) {
@@ -25,7 +25,7 @@ const Products = () => {
     const handleAddToCart = async (productName) => {
         const username = localStorage.getItem('username');
         try {
-            const response = await fetch('http://localhost:3000/createcartproducts', {
+            const response = await fetch('http://127.0.0.1:3000/createcartproducts', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -57,7 +57,8 @@ const Products = () => {
                 {products.map((product, index) => (
                     <div className="product-box" key={index}>
                         <div className="product-img">
-                            <img src={product.image} alt={product.name} />
+                        <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+
                         </div>
                         <div className="product-info">
                             <div className="price">

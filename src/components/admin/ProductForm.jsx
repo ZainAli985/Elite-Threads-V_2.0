@@ -35,7 +35,7 @@ const ProductForm = () => {
         formData.append('category', category);
 
         try {
-            const response = await fetch('http://localhost:3000/createproduct', {
+            const response = await fetch('http://127.0.0.1:3000/createproduct', {
                 method: 'POST',
                 body: formData,
             });
