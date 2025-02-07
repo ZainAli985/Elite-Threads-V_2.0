@@ -10,14 +10,18 @@ const port = process.env.PORT;
 
 // Middle Ware
 
-app.use(cors({
-    origin: '*',  
-    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization'],
-    credentials: true
-}));
+app.use(cors());
 
+const __dirname = path.resolve();
+console.log(__dirname);
 
+// Serve static files from the 'dist' folder
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Serve index.html for all unknown routes (for React Router)
+app.get('/reactapp', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+})
 
 app.use(express.json());
 

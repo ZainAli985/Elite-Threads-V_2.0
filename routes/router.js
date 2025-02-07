@@ -15,11 +15,6 @@ import { upload } from '../middlewares/multer-upload-middleware.js';
 router.post('/login', login);
 router.post('/register', register);
 
-router.get('/', (req, res)=>{
-    res.send('HELOO PC SERVER')
-})
-
-
 // Admin Register/Login 
 router.post('/adminlogin', Adminlogin)
 router.post('/adminregister', AdminRegister)

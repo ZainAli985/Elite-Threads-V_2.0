@@ -57,7 +57,7 @@ const Products = () => {
                 {products.map((product, index) => (
                     <div className="product-box" key={index}>
                         <div className="product-img">
-                        <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                        <img src= {product.image} alt={product.name} />
 
                         </div>
                         <div className="product-info">
