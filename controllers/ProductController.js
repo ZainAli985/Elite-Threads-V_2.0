@@ -36,26 +36,6 @@ export const CreateProduct = async (req, res) => {
 }
 
 
-// export const createProduct = async (req, res) => {
-//     try {
-//         const { image, name, price, desc,  category } = req.body;
-//         const ProductCount = await Product.countDocuments()
-//         const product_id = ProductCount + 1; 
-//         const newProduct = new Product({
-//             product_id,
-//             image,
-//             name,
-//             price,
-//             desc,
-//             category
-//         });
-//         await newProduct.save();
-//         res.status(201).json({ message: 'Your product was created successfully', product: newProduct });
-//     } catch (error) {
-//         res.status(400).json({ message: 'Error creating product', error: error.message });
-//         console.log(error)
-//     }
-// };
 
 // Controller to handle fetching all products
 export const getProducts = async (req, res) => {
@@ -64,6 +44,7 @@ export const getProducts = async (req, res) => {
 
         // Fetch all products from the database
         const products = await Product.find({category: categoryName});
+        console.log(products)
 
         // Send the products as a response
         res.status(200).json({

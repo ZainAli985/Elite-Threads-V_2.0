@@ -7,7 +7,7 @@ function TrackingPage() {
     const [OrderedProducts, setOrderedProducts] = useState([]);
     const [netTotal, setnetTotal] = useState('')
     const navigate = useNavigate()
-    function navigateHome(){
+    function navigateHome() {
         navigate('/home')
     }
     async function FetchUserOrders(params) {
@@ -53,7 +53,7 @@ function TrackingPage() {
                     OrderedProducts.map((order, index) => (
                         <div className="orders-container" key={index}>
                             <div className="p-img">
-                                <img src={order.image || defaultProductImg} alt={order.name} />
+                                <img src={`http://39.52.37.193:3000${order.image}`} alt={order.name} />
                             </div>
 
                             <div className="p-details">

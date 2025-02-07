@@ -2,35 +2,32 @@ import express from 'express';
 import connectDB from '../config/Dbconnect.js';
 import cors from 'cors';
 import router from '../routes/router.js';
-import path from 'path'
+import path from 'path';
+import loggerMiddleware from '../middlewares/LoggerMiddleWare.js';
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 3000; // Ensure there's a default port
 
-
-// Middle Ware
+// Middleware
 app.use(cors());
-
+app.use(express.json());
+app.use(loggerMiddleware)
 
 const __dirname = path.resolve();
 
 
-// Serve static files from the 'dist' folder
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
-// Serve index.html for all unknown routes (for React Router)
-app.get('*', (req, res) => {
-    if(!req.path.startsWith('/api')){
-        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-    }
-})
-
-app.use(express.json());
-
-// Router
+// Serve API routes **before** handling frontend OTHERWISE WEBSITE WILL BUG SPECIFICALLY INSIDE PRODUCTS PAGE
 app.use('/api', router);
 
 
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Serve React frontend for all other routes (MUST BE LAST)
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 connectDB();
 

@@ -33,7 +33,6 @@ router.get('/adminpanel', authenticateToken, (req,res)=>{
 });
 
 // Admin Routes 
-// router.post('/createproduct', createProduct);
 router.post('/createproduct', upload.single('image'), CreateProduct);
 router.post('/deleteproducts', deleteProducts);
 router.get('/getAdminproducts', getAdminProducts);
