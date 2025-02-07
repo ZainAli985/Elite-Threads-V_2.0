@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./products.css";
+import API_BASE_URL from '../../../config/ApiBaseUrl.js';
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
@@ -8,7 +9,7 @@ const AdminProducts = () => {
   // Fetch products from the API
   const getProducts = async () => {
     try {
-      const response = await fetch("http://127.0.0.1:3000/getAdminproducts");
+      const response = await fetch(`${API_BASE_URL}/getAdminproducts`);
       const data = await response.json();
       setProducts(data.products || []); // Set products from the API response
     } catch (e) {
@@ -28,7 +29,7 @@ const AdminProducts = () => {
   // Handle product deletion
   const deleteProduct = async (productName) => {
     try {
-      const response = await fetch("http://127.0.0.1:3000/deleteproducts", {
+      const response = await fetch(`${API_BASE_URL}/deleteproducts`, {
         method: "POST", // or "DELETE", depending on your backend setup
         headers: {
           "Content-Type": "application/json",

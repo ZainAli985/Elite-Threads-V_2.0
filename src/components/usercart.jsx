@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './usercart.css'
 import { useNavigate } from "react-router-dom";
 import { set } from "mongoose";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const UserCart = () => {
@@ -15,7 +16,7 @@ const UserCart = () => {
     const fetchCart = async () => {
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:3000/getusercart', {
+            const response = await fetch(`${API_BASE_URL}/getusercart`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -36,7 +37,7 @@ const UserCart = () => {
     const deleteProduct = async (productName, price) => {
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:3000/deletecartproduct', {
+            const response = await fetch(`${API_BASE_URL}/deletecartproduct`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -68,7 +69,7 @@ const UserCart = () => {
 
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch(`http://127.0.0.1:3000/${action}qty`, {
+            const response = await fetch(`${API_BASE_URL}/${action}qty`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

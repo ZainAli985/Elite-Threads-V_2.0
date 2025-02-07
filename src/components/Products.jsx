@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './user-products.css';
 import ProductNav from './ProductNav';
 import { useParams } from 'react-router-dom';
+import API_BASE_URL from '../../config/ApiBaseUrl';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
@@ -11,7 +12,7 @@ const Products = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await fetch(`http://127.0.0.1:3000/getproducts/${categoryName}`);
+                const response = await fetch(`${API_BASE_URL}/getproducts/${categoryName}`);
                 const data = await response.json();
                 setProducts(data.products);
             } catch (err) {
@@ -25,7 +26,7 @@ const Products = () => {
     const handleAddToCart = async (productName) => {
         const username = localStorage.getItem('username');
         try {
-            const response = await fetch('http://127.0.0.1:3000/createcartproducts', {
+            const response = await fetch(`${API_BASE_URL}/createcartproducts`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

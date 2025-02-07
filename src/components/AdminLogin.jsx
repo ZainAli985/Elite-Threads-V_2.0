@@ -2,6 +2,7 @@ import React, { useState,  } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import AdminNav from "./AdminNav";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 function AdminLoginForm() {
     const [email, setEmail] = useState('');
@@ -21,7 +22,7 @@ function AdminLoginForm() {
 
         const user = { email, password, admin_id };
         try {
-            const response = await fetch('http://127.0.0.1:3000/adminlogin', {
+            const response = await fetch(`${API_BASE_URL}/adminlogin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

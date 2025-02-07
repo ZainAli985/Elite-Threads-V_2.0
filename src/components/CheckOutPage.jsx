@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './checkoutpage.css';
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 function CheckoutBox() {
     const [total, setTotal] = useState(0);
@@ -27,7 +28,7 @@ function CheckoutBox() {
         
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:3000/placeorder', {
+            const response = await fetch(`${API_BASE_URL}/placeorder`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -55,7 +56,7 @@ function CheckoutBox() {
     async function getNetTotal() {
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch('http://127.0.0.1:3000/placeorder', {
+            const response = await fetch(`${API_BASE_URL}/placeorder`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

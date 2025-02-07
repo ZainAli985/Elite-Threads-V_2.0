@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './TrackingPage.css'
 import { useNavigate } from "react-router-dom";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 function TrackingPage() {
     const [OrderedProducts, setOrderedProducts] = useState([]);
@@ -13,7 +14,7 @@ function TrackingPage() {
 
         try {
             const username = localStorage.getItem('username');
-            const response = await fetch(`http://127.0.0.1:3000/trackorders`, {
+            const response = await fetch(`${API_BASE_URL}/trackorders`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

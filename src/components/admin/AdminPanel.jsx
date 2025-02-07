@@ -6,6 +6,8 @@ import ProductForm from './ProductForm';
 import AdminNav from './AdminNav.jsx';
 import AdminInfo from './AdminInfo.jsx';
 import AdminProducts from './Adminproducts.jsx';
+import API_BASE_URL from '../../../config/ApiBaseUrl.js';
+
 
 function AdminPanel() {
   const navigate = useNavigate();
@@ -19,7 +21,7 @@ function AdminPanel() {
 
     try {
       // Validate token with the backend
-      const response = await fetch('http://localhost:3000/adminpanel', {
+      const response = await fetch(`${API_BASE_URL}/adminpanel`, {
         headers: {
           method: 'GET',
           Authorization: `Bearer ${token}`,

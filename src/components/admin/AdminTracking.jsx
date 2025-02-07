@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./OrdersPanel.css";
+import API_BASE_URL from '../../../config/ApiBaseUrl.js';
 
 function AdminTrackingPanel() {
     const [orders, setOrders] = useState([]);
@@ -8,7 +9,7 @@ function AdminTrackingPanel() {
 
     const fetchOrders = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:3000/getuserorders");
+            const response = await fetch(`${API_BASE_URL}/getuserorders`);
             if (!response.ok) {
                 throw new Error("Failed to fetch orders");
             }
@@ -23,7 +24,7 @@ function AdminTrackingPanel() {
     // Handle the status change
     const HandleStatusChange = async (username, product_id, status) => {
         try {
-            const response = await fetch("http://127.0.0.1:3000/updateorderstatus", {
+            const response = await fetch(`${API_BASE_URL}/updateorderstatus`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

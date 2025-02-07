@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./RegisterForm.css";
 import Navbar from './Navbar.jsx';
+import API_BASE_URL from "../../config/ApiBaseUrl.js";
 
 function RegisterForm() {
     const [username, setUsername] = useState('');
@@ -14,7 +15,7 @@ function RegisterForm() {
 
         if (username !== '' && email !== '' && password !== '') {
             try {
-                const response = await fetch('http://127.0.0.1:3000/register', {
+                const response = await fetch(`${API_BASE_URL}/register`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'

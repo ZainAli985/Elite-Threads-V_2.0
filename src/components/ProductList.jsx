@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);
@@ -6,7 +7,7 @@ const ProductList = () => {
     // Fetch products from API
     const loadProducts = async () => {
         try {
-            const response = await fetch("http://127.0.0.1:3000/products");
+            const response = await fetch(`${API_BASE_URL}/products`);
             const data = await response.json();
 
             if (response.ok) {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./LoginForm.css";
 import Navbar from './Navbar.jsx';
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 function LoginForm() {
     const [email, setEmail] = useState('');
@@ -13,7 +14,7 @@ function LoginForm() {
         e.preventDefault();
         const user = { email, password };
         try {
-            const response = await fetch('http://127.0.0.1:3000/login', {
+            const response = await fetch(`${API_BASE_URL}/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

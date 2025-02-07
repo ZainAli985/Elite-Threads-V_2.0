@@ -9,29 +9,31 @@ const port = process.env.PORT;
 
 
 // Middle Ware
-
 app.use(cors());
 
+
 const __dirname = path.resolve();
-console.log(__dirname);
+
 
 // Serve static files from the 'dist' folder
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Serve index.html for all unknown routes (for React Router)
-app.get('/reactapp', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+app.get('*', (req, res) => {
+    if(!req.path.startsWith('/api')){
+        res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    }
 })
 
 app.use(express.json());
 
 // Router
-app.use(router);
+app.use('/api', router);
 
 
 
 connectDB();
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running on http://127.0.0.1:${port}`);
+    console.log(`Server is running on http://39.52.37.193:${port}`);
 });

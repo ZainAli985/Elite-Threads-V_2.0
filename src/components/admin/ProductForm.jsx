@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './admin.css';
 import Sidemenu from './Sidemenu';
 import AdminNav from './AdminNav';
+import API_BASE_URL from '../../../config/ApiBaseUrl.js';
 
 const ProductForm = () => {
     const [imageFile, setImageFile] = useState(null);
@@ -35,7 +36,7 @@ const ProductForm = () => {
         formData.append('category', category);
 
         try {
-            const response = await fetch('http://127.0.0.1:3000/createproduct', {
+            const response = await fetch(`${API_BASE_URL}/createproduct`, {
                 method: 'POST',
                 body: formData,
             });

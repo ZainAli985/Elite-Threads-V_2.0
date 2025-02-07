@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import './HomeBanner.css';
 import HomeNav from "./HomeNav";
 import Category from "./CategoryBox";
+import API_BASE_URL from "../../config/ApiBaseUrl";
 
 // Importing Banner Images 
 import covertext from "/assets/covertext.png";
@@ -26,7 +27,7 @@ function HomeBanner() {
 
         try {
             // Validate token with the backend
-            const response = await fetch('http://127.0.0.1:3000/home', {
+            const response = await fetch(`${API_BASE_URL}/home`, {
                 headers: {
                     method: 'GET',
                     Authorization: `Bearer ${token}`,
