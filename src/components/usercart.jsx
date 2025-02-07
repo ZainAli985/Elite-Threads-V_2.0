@@ -128,7 +128,8 @@ const UserCart = () => {
     const SendCheckedOutProducts = async (selectedProducts) => {  
         try {
             const userName = localStorage.getItem('username');
-            const response = await fetch('http://39.52.37.193:3000/checkout', {
+            console.log("Sending Checkout Products to API:", selectedProducts);
+            const response = await fetch(`${API_BASE_URL}/checkout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

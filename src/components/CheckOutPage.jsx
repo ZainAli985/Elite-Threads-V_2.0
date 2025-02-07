@@ -124,7 +124,7 @@ function CheckoutBox() {
                         <h5>SHIPPING: ${shipmentCharge}/-</h5>
                     </div>
                     <div className="charges">
-                        <h5>GST%: ${gst}/-</h5>
+                        <h5>GST%: ${gst.toFixed(2)}/-</h5>
                     </div>
                     <div className="net-total">
                         <h3>NET TOTAL: ${netTotal}/-</h3>

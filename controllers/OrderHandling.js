@@ -10,16 +10,6 @@ export const CheckedOutProducts = async (req, res) => {
             return res.status(404).json({ message: "User Not Found" });
         }
         user.cart.CheckedOutProducts.push(...selectedProducts);
-        setTimeout(async () => {
-            const updatedUser = await User.findOne({ username: userName });
-
-            if (updatedUser && updatedUser.cart.CheckedOutProducts.length > 0) {
-                updatedUser.cart.CheckedOutProducts = []; 
-
-                await updatedUser.save();
-            }
-        }, 1800000);
-
         await user.save();
         res.status(200).json({ message: "Products Checked Out Successfully" });
     }
@@ -47,11 +37,10 @@ export const PlaceOrder = async (req, res) => {
         }
         if (checkedOutProducts) {
             user.orders.products = checkedOutProducts;
-            user.orders.NetTotal = netTotal
+            user.orders.NetTotal = netTotal;
         }
         await user.save();
         const shippingAddress = user.shippingAddress;
-        // user.cart.CheckedOutProducts = [];   
 
         user.save();
 
