@@ -44,7 +44,6 @@ export const getProducts = async (req, res) => {
 
         // Fetch all products from the database
         const products = await Product.find({category: categoryName});
-        console.log(products)
 
         // Send the products as a response
         res.status(200).json({
