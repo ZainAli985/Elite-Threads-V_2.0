@@ -1,3 +1,4 @@
 node_modules
 /src/components/html
 .env
+dist
