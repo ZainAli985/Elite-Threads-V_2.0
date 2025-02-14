@@ -1,55 +1,57 @@
 body {
-    overflow-y: auto;
-    overflow-x: hidden;
+    overflow-x: hidden; 
 }
+
 .banner {
-    background: url('../assets/HomeBg.jpg');
+    background: url('/assets/HomeBg.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     height: 67vw; 
+    overflow: hidden;
 }
 
-.banner-content{
+.banner-content {
     display: flex;
-    /* border: 2px solid red; */
-    /* padding: 26vw 0vw 0vw 2vw */
+    position: relative;
     height: 100%;
-    position: relative; /* Needed for absolute positioning of children if required */
     justify-content: space-around;
+    overflow: hidden; /* Prevent animation overflow */
 }
-.text{
+
+.text {
     display: inline-flex;
     height: 50vw;
     width: auto;
-    /* border: 2px solid yellow; */
     padding: 25vw 0 0 0vw;
-    animation: slideInLeft 2s ease-out forwards; /* Apply left-to-right animation */
+    animation: slideInLeft 2s ease-out forwards;
 }
-.text img{
+
+.text img {
     object-fit: cover;
     width: auto;
     height: 60%;
 }
 
-.model-img{
-    /* border: 2px solid greenyellow; */
+.model-img {
     display: flex;
-    animation: slideInRight 2s ease-out forwards; /* Apply right-to-left animation */
+    animation: slideInRight 2s ease-out forwards;
     padding-top: 10vw;
+    position: relative;
 }
 
-.model-img img{
+.model-img img {
     object-fit: cover;
+    max-height: 100%; /* Prevents vertical scroll */
 }
 
 /* Keyframes for left-to-right animation */
 @keyframes slideInLeft {
     from {
-        transform: translateX(-100%); /* Start off-screen to the left */
+        transform: translateX(-10vw); /* Use viewport width instead of percentage */
         opacity: 0;
     }
     to {
-        transform: translateX(0); /* End at its normal position */
+        transform: translateX(0);
         opacity: 1;
     }
 }
@@ -57,20 +59,7 @@ body {
 /* Keyframes for right-to-left animation */
 @keyframes slideInRight {
     from {
-        transform: translateX(100%); /* Start off-screen to the right */
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0); /* End at its normal position */
-        opacity: 1;
-    }
-}
-
-
-/* Keyframes for sliding in from the left */
-@keyframes slideInLeft {
-    from {
-        transform: translateX(-200%);
+        transform: translateX(10vw); /* Avoid pushing the page */
         opacity: 0;
     }
     to {
@@ -79,64 +68,53 @@ body {
     }
 }
 
-/* Keyframes for sliding out to the left */
+/* Sliding out */
 @keyframes slideOutLeft {
     from {
         transform: translateX(0);
         opacity: 1;
     }
     to {
-        transform: translateX(-200%);
+        transform: translateX(-10vw);
         opacity: 0;
     }
 }
 
-/* Keyframes for sliding in from the right */
-@keyframes slideInRight {
-    from {
-        transform: translateX(200%);
-        opacity: 0;
-    }
-    to {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-/* Keyframes for sliding out to the right */
 @keyframes slideOutRight {
     from {
         transform: translateX(0);
         opacity: 1;
     }
     to {
-        transform: translateX(200%);
+        transform: translateX(10vw);
         opacity: 0;
     }
 }
 
-/* Utility class for sliding in from the left */
+/* Utility classes */
 .slide-in-left {
     animation: slideInLeft 1.2s ease-in forwards;
 }
 
-/* Utility class for sliding out to the left */
 .slide-out-left {
     animation: slideOutLeft 2s ease-out forwards;
 }
 
-/* Utility class for sliding in from the right */
 .slide-in-right {
     animation: slideInRight 1.2s ease-out forwards;
 }
 
-/* Utility class for sliding out to the right */
 .slide-out-right {
     animation: slideOutRight 2s ease-out forwards;
 }
+.hr{
+    height: 3px;
+    background-color: #a18e5c;
+    border: none
+}
+@media screen and (max-width: 650px) {
 
-
-.awein{
-    background-color: #050F26;
-    height: 50vw;
+   .hr{
+    height: 1px;
+   }
 }

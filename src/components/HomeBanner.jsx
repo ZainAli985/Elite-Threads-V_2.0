@@ -113,7 +113,7 @@ function HomeBanner() {
                 </div>
             </div>
         </div>
-        <hr style={{ height: '3px', backgroundColor: '#a18e5c', border: 'none' }} />
+        <hr  className="hr" />
 
         <Category/>
         </>

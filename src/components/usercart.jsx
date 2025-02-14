@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './usercart.css'
 import { useNavigate } from "react-router-dom";
-import { set } from "mongoose";
+import Notification from "./Notfication";
 import API_BASE_URL from "../../config/ApiBaseUrl";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
@@ -78,7 +78,7 @@ const UserCart = () => {
             });
             if (response.ok) {
                 const data = await response.json();
-                console.log(data.message);
+                // console.log(data.message);
                 //  fetchCart();
             }
 
@@ -125,7 +125,7 @@ const UserCart = () => {
         setCheckedProducts((prevProducts) => ({ ...prevProducts, [productName]: isChecked }));
     }
     // Checkout Page Handling 
-    const SendCheckedOutProducts = async (selectedProducts) => {  
+    const SendCheckedOutProducts = async (selectedProducts) => {
         try {
             const userName = localStorage.getItem('username');
             console.log("Sending Checkout Products to API:", selectedProducts);
@@ -170,61 +170,59 @@ const UserCart = () => {
     };
     return (
         <>
-        <div className="user-cart">
-            <div className="header">
-                <h1>MY CART</h1>
-            </div>
-            <div className="cart-container">
-                {cartProducts.length != 0 ? (
-                    cartProducts.map((product, index) => (
-                        <div key={index} className="cart-product">
-                            <div className="cart-product-img">
-                                <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+            <div className="user-cart">
+                <div className="header">
+                    <h1>MY CART</h1>
+                </div>
+                <div className="cart-container">
+                    {cartProducts.length != 0 ? (
+                        cartProducts.map((product, index) => (
+                            <div key={index} className="cart-product">
+                                <div className="cart-product-img">
+                                    <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                                </div>
+                                <div className="product-details">
+                                    <h2>${product.price}/-</h2>
+                                    <h2>{product.name}</h2>
+                                    <span id="qty">
+                                        <span>
+                                            QTY:
+                                        </span>
+                                        <i className="fa-solid fa-plus" id="increment" onClick={() => incrementQuantity(product.name, product.qty)}></i>
+                                        <span className="qty-number">{product.qty}</span>
+                                        <i className="fa-solid fa-minus" id="decrement" onClick={() => decreamentQuantity(product.name)}></i>
+                                    </span>
+                                </div>
+                                <div className="select-delete-container">
+                                    <img src="/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
+                                    <input
+                                        type="checkbox"
+                                        id="product-check"
+                                        onChange={(e) => handleCheckboxChange(e, product.name, product.price, product.qty)}
+                                        checked={checkedProducts[product.name] || false}
+                                    />
+                                </div>
                             </div>
-                            <div className="product-details">
-                                <h2>${product.price}/-</h2>
-                                <h2>{product.name}</h2>
-                                <span id="qty">
-                                    QTY:
-                                    <i className="fa-solid fa-plus" id="increment" onClick={() => incrementQuantity(product.name, product.qty)}></i>
-                                    {product.qty}
-                                    <i className="fa-solid fa-minus" id="decrement" onClick={() => decreamentQuantity(product.name)}></i>
-                                </span>
-                            </div>
-                            <div className="select-delete-container">
-                                <img src="/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
-                                <input
-                                    type="checkbox"
-                                    id="product-check"
-                                    onChange={(e) => handleCheckboxChange(e, product.name, product.price, product.qty)}
-                                    checked={checkedProducts[product.name] || false}
-                                />
-                            </div>
-                        </div>
-                    ))
-                ) : <h1 className="default-cart-message">No Products In Cart</h1>
-                }
+                        ))
+                    ) : <h1 className="default-cart-message">No Products In Cart</h1>
+                    }
 
-            </div>
+                </div>
 
-            <div className="checkout-box">
-                <div className="subtotal-price">
-                    <span id="subtotal">SUBTOTAL: ${subtotal.toFixed(2)}/-</span>
-                </div>
-                <div className="checkout-btn-container">
-                    <button type="button" className="checkout-btn" onClick={handleCheckout}>
-                        CHECKOUT
-                    </button>
+                <div className="checkout-box">
+                    <div className="subtotal-price">
+                        <span id="subtotal">SUBTOTAL: ${subtotal.toFixed(2)}/-</span>
+                    </div>
+                    <div className="checkout-btn-container">
+                        <button type="button" className="checkout-btn" onClick={handleCheckout}>
+                            CHECKOUT
+                        </button>
+                    </div>
                 </div>
             </div>
-        </div>
-        {notification && (
-                <div className="notification-div-cart">
-                    <h3>{notification}</h3>
-                </div>
-            )}
+           <Notification message= {notification}/>
         </>
-        
+
     );
 };
 

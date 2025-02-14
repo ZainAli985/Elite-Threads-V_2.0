@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expandable Table</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f4f4f4;
+        }
+
+        .expandable-content {
+            display: none; /* Initially hidden */
+        }
+
+        .expanded {
+            display: table-row; /* Show when expanded */
+        }
+
+        .view-btn {
+            cursor: pointer;
+            background-color: blue;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+        }
+
+        .view-btn:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Orders List (Admin Panel)</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Username</th>
+                <th>Product (First One)</th>
+                <th>Net Total</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Order Row (Main Row) -->
+            <tr>
+                <td>#12345</td>
+                <td>JohnDoe</td>
+                <td>Nike Shoes</td>
+                <td>$150</td>
+                <td>Shipped</td>
+                <td>
+                    <button class="view-btn" onclick="toggleDetails('order1')">View</button>
+                </td>
+            </tr>
+
+            <!-- Expandable Row (Hidden Initially) -->
+            <tr class="expandable-content" id="order1">
+                <td colspan="6">
+                    <strong>Full Order Details:</strong>
+                    <ul>
+                        <li>Product 1: Nike Shoes - $150</li>
+                        <li>Product 2: Adidas Hoodie - $80</li>
+                        <li>Product 3: Puma Cap - $30</li>
+                    </ul>
+                    <strong>Shipping Address:</strong>
+                    <p>123 Street, New York, USA</p>
+                    <button class="view-btn" onclick="toggleDetails('order1')">Hide</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function toggleDetails(orderId) {
+            const row = document.getElementById(orderId);
+            row.classList.toggle("expanded");
+        }
+    </script>
+
+</body>
+</html>

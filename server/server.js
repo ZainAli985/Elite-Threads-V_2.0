@@ -25,12 +25,12 @@ app.use('/api', router);
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Serve React frontend for all other routes (MUST BE LAST)
-app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-});
+// app.get('*', (req, res) => {
+//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+// });
 
 connectDB();
 
 app.listen(port, '0.0.0.0', () => {
-    console.log(`Server is running on http://39.52.37.193:${port}`);
+    console.log(`Server is running on http://127.0.0.1:${port}`);
 });

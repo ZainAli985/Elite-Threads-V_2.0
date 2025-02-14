@@ -12,7 +12,8 @@
     align-items: center;
     gap: 2vw;
 }
-.cat-parent h1{
+
+.cat-parent h1 {
     font-size: 5vw;
 }
 
@@ -33,13 +34,15 @@
     /* background: #0A142D; */
     border-radius: 1rem;
     overflow: hidden;
-    width: calc(33% - 1rem); /* 3 cards in a row, with spacing */
+    width: calc(33% - 1rem);
+    /* 3 cards in a row, with spacing */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease-in-out;
 }
 
 .cat-box:hover {
-    transform: translateY(-10px); /* Hover effect */
+    transform: translateY(-10px);
+    /* Hover effect */
 }
 
 .img {
@@ -52,12 +55,12 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-bottom: 3px solid #a18e5c;
+    border-bottom: 2px solid #a18e5c;
 }
 
 .txt {
     text-align: center;
-    padding: 1rem;
+    padding: 2vw;
 }
 
 .txt h2 {
@@ -69,7 +72,8 @@
 /* Responsive Design: For mobile devices */
 @media screen and (max-width: 768px) {
     .cat-parent {
-        padding: 1rem;
+        padding: 0.5rem;
+        text-align: center;
     }
 
     h1 {
@@ -81,20 +85,42 @@
         display: flex;
         flex-wrap: nowrap;
         gap: 1rem;
+        overflow-x: auto;
+        width: 100%;
+        padding-bottom: 2vw;
     }
 
     .cat-box {
-        width: 200px; /* Make cards smaller to fit horizontally */
+        width: 30vw;
+        /* Make cards smaller to fit horizontally */
         flex-shrink: 0;
     }
+
 }
 
 @media screen and (max-width: 480px) {
     h1 {
-        font-size: 1.5rem;
+        font-size: 3vw;
     }
 
     .txt h2 {
-        font-size: 1rem;
+        font-size: 2.2vw;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .cat-box {
+        width: 40vw;
+    }
+
+    .txt {
+        padding: 2vw;
+    }
+
+    .txt h2 {
+        font-size: 3vw;
+    }
+    .cat-box{
+        border-radius: 3vw;
     }
 }
