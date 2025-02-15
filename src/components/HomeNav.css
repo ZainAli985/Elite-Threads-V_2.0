@@ -46,6 +46,7 @@ body {
     border: 2px solid white;
     outline: none;
     padding: 1vw;
+    font-size: 1vw;
     margin: 1vw;
     border-radius: 0.5vw;
     width: 20vw;
@@ -53,9 +54,11 @@ body {
     background: transparent;
     color: white;
 }
-.search input::-webkit-search-cancel-button{
+
+.search input::-webkit-search-cancel-button {
     appearance: none;
 }
+
 .search input::placeholder {
     color: white;
     font-family: "Junge", serif;
@@ -107,11 +110,12 @@ body {
     width: 100%;
     position: absolute;
 }
+
 @media screen and (min-width: 1800px) {
     .search input {
         border: 6px solid white;
         outline: none;
-        padding: 1.5vw;
+        /* padding: 1.5vw; */
         margin: 1vw;
         border-radius: 0.5vw;
         width: 30vw;
@@ -119,17 +123,18 @@ body {
         background: transparent;
         color: white;
     }
-    .search input::placeholder{
+
+    .search input::placeholder {
         font-size: 1.5vw;
     }
-    
+
 }
 
 @media screen and (max-width: 768px) {
     .search input {
         border: 1px solid white;
         outline: none;
-        padding: 0.7vw;
+        /* padding: 0.7vw; */
         margin: 1vw;
         border-radius: 0.5vw;
         width: 25vw;
@@ -147,7 +152,7 @@ body {
     .search input {
         border: 1px solid white;
         outline: none;
-        padding: 1vw;
+        /* padding: 1vw; */
         margin: 1vw;
         border-radius: 1vw;
         width: 30vw;
@@ -165,20 +170,23 @@ body {
     .cart img {
         width: 3.5vw;
     }
-    .search img{
+
+    .search img {
         width: 3vw;
     }
 
 }
 
 @media screen and (max-width: 375px) {
-    .cart img{
+    .cart img {
         object-fit: cover;
         width: 15px;
     }
-    .search img{
+
+    .search img {
         width: 12px;
     }
+
     .search input {
         border: 1px solid white;
         outline: none;
@@ -191,9 +199,9 @@ body {
         color: white;
         font-size: 2vw;
     }
-    
-    .search input::placeholder{
+
+    .search input::placeholder {
         font-size: 2.2vw;
     }
-    
+
 }
