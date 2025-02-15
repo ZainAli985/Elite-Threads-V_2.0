@@ -10,7 +10,7 @@ const UserCart = () => {
     const [subtotal, setSubtotal] = useState(0);
     const [checkedProducts, setCheckedProducts] = useState({});
     const [selectedProducts, setSelectedProducts] = useState([]);
-    const [notification, setNotification] = useState('');
+    const [notificationMessage, setnotificationMessage] = useState("");
     const navigate = useNavigate();
 
     const fetchCart = async () => {
@@ -47,10 +47,10 @@ const UserCart = () => {
 
             const data = await response.json();
             if (response.ok) {
-                setNotification(data.message);
+                setnotificationMessage(data.message);
                 setTimeout(() => {
-                    setNotification('')
-                }, 8000);
+                    setnotificationMessage('')
+                }, 6000);
                 setCartProducts((prevProducts) => {
                     const updatedProducts = prevProducts.filter((product) => product.name !== productName);
                     return updatedProducts;
@@ -220,7 +220,7 @@ const UserCart = () => {
                     </div>
                 </div>
             </div>
-           <Notification message= {notification}/>
+            {notificationMessage && <Notification message={notificationMessage} />}
         </>
 
     );

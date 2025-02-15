@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import "./RegisterForm.css";
 import Navbar from './Navbar.jsx';
 import API_BASE_URL from "../../config/ApiBaseUrl.js";
+import Notification from "./Notfication.jsx";
 
 function RegisterForm() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [notification, setNotification] = useState({ message: '', type: '' }); // State for notifications
+    const [notificationMessage, setnotificationMessage] = useState("");
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -32,22 +33,34 @@ function RegisterForm() {
                     setPassword('');
 
                     // Show success notification
-                    setNotification({ message: 'User Created Successfully! LOG IN', type: 'success' });
+                    setnotificationMessage("REGISTERED SUCCESSFULLY! LOG IN");
+                    setTimeout(() => {
+                        setnotificationMessage('')
+                    }, 6000);
                 } else {
-                    setNotification({ message: 'Registration Failed. Try Again.', type: 'error' }); // Error notification
+                    setnotificationMessage("REGISTRATION FAILED! RETRY");
+                    setTimeout(() => {
+                        setnotificationMessage('')
+                    }, 6000);
                 }
             } catch (err) {
                 console.log(err);
-                setNotification({ message: 'An error occurred. Please try again later.', type: 'error' }); // Error notification
+                setnotificationMessage("AN ERROR OCCURED PLEASE TRY AGAIN"); // Error notification
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
             }
         } else {
-            setNotification({ message: 'Please fill in all fields.', type: 'error' }); // Error notification for empty fields
+            setnotificationMessage("PLEASE FILL REQUIRED INFO!"); // Error notification for empty fields
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
         }
     };
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
@@ -86,11 +99,8 @@ function RegisterForm() {
             </div>
 
             {/* Notification */}
-            {notification.message && (
-                <div className={`notification ${notification.type}`}>
-                    {notification.message}
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
+
         </>
     );
 }

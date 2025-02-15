@@ -1,12 +1,14 @@
 import React from "react";
-import './Notification.css'
+import './Notification.css';
 
-function Notification(message) {
-    <>
-        <div className="notification-div">
-            <h3>{message} HELLO FROM NOTIFICATION DIV</h3>
-        </div>
-    </>
+function Notification({ message } /*Destructure From Params */) {
+    return (
+        <>
+            <div className="notification-div-g">
+                {message}
+            </div>
+        </>
+    );
 }
 
 export default Notification;

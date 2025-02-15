@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './checkoutpage.css';
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "./Notfication";
 
 function CheckoutBox() {
     const [total, setTotal] = useState(0);
@@ -17,7 +18,7 @@ function CheckoutBox() {
     const [postalCode, setPostalCode] = useState('');
 
     // Notification 
-    const [notification, setNotification] = useState('');
+    const [notificationMessage, setnotificationMessage] = useState("");
 
     const navigate = useNavigate()
 
@@ -25,7 +26,7 @@ function CheckoutBox() {
     const sendShippingData = async (e) => {
         e.preventDefault();
         const shippingData = { country, city, address, landmark, postalCode };
-        
+
         try {
             const username = localStorage.getItem('username');
             const response = await fetch(`${API_BASE_URL}/placeorder`, {
@@ -37,15 +38,13 @@ function CheckoutBox() {
             });
             const data = await response.json();
             if (response.ok) {
-                setNotification("Placing Order Please Be Patient");
+                setnotificationMessage("Placing Order! Please Be Patient");
 
-                // Hide notification after 3 seconds
                 setTimeout(() => {
-                    setNotification(''); 
-                    navigate('/orderconfirmation')
-                }, 7000);
+                    setnotificationMessage('');
+                    navigate('/orderconfirmation');
+                }, 6000);
             }
-
         }
         catch (err) {
             console.error("Error:", err);
@@ -66,13 +65,6 @@ function CheckoutBox() {
 
             const data = await response.json();
             if (response.ok) {
-
-                // Default Notification 
-                setNotification('PLEASE PROCEED WITH YOUR ORDER IN 30 MINS ELSE IT WILL BE CANCELLED AUTOMATICALLY');
-
-                setTimeout(() => {
-                    setNotification('');
-                }, 8000);
                 setTotal(data.total || 0);
                 setShipmentCharge(data.shipmentCharge || 0);
                 setGst(data.gst || 0);
@@ -97,7 +89,7 @@ function CheckoutBox() {
         const timeout = setTimeout(() => {
             getNetTotal(); //REFETCHING SAME FUNCTION SO THE UI RELAODS IN ORDER TO SHOW CORRECT VALUES
         }, 1000);  //USED TIMEOUT INSTEAD OF INTERVAL SO IT COULD ONLY RUN ONCE DUE TO NOTIFICATION BUG
-        return ()=> clearInterval(timeout);
+        return () => clearInterval(timeout);
     }, []);
 
     return (
@@ -121,7 +113,7 @@ function CheckoutBox() {
                         <h5>BILL: ${total}/-</h5>
                     </div>
                     <div className="charges">
-                        <h5>SHIPPING: ${shipmentCharge}/-</h5>
+                        <h5>SHIPPING: ${shipmentCharge.toFixed(2)}/-</h5>
                     </div>
                     <div className="charges">
                         <h5>GST%: ${gst.toFixed(2)}/-</h5>
@@ -134,11 +126,7 @@ function CheckoutBox() {
                     <button onClick={sendShippingData}>PLACE ORDER</button>
                 </div>
             </div>
-            {notification && (
-                <div className="notification-div">
-                    <h3>{notification}</h3>
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
         </>
     );
 }
