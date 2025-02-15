@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./LoginForm.css";
 import Navbar from './Navbar.jsx';
 import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "./Notfication.jsx";
 
 function LoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [notification, setNotification] = useState({ message: '', type: '' }); // New state for notification
-    const navigate = useNavigate(); 
+    const [notificationMessage, setnotificationMessage] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,20 +29,29 @@ function LoginForm() {
                 let username = data.username;
                 localStorage.setItem('token', token);
                 localStorage.setItem('username', username);
-                setNotification({ message: 'Login Successful!', type: 'success' }); // Success notification
+                setnotificationMessage("LOGIN SUCCESSFUL"); // Success notification
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
                 navigate('/home'); // Redirect to home page
             } else {
-                setNotification({ message: 'Login Failed. Please check your credentials.', type: 'error' }); // Error notification
+                setnotificationMessage("LOGIN FAILED");
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
             }
         } catch (err) {
             console.log(err);
-            setNotification({ message: 'An error occurred. Please try again.', type: 'error' }); // Error notification
+            setnotificationMessage("AN ERROR OCCURED! TRY AGAIN");
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
         }
     };
 
     return (
         <>
-        <Navbar />
+            <Navbar />
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
@@ -73,11 +83,8 @@ function LoginForm() {
             </div>
 
             {/* Notification */}
-            {notification.message && (
-                <div className={`notification ${notification.type}`}>
-                    {notification.message}
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
+
         </>
     );
 }

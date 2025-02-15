@@ -110,7 +110,6 @@ body {
     width: 100%;
     position: absolute;
 }
-
 @media screen and (min-width: 1800px) {
     .search input {
         border: 6px solid white;
@@ -127,14 +126,14 @@ body {
     .search input::placeholder {
         font-size: 1.5vw;
     }
-
+    
 }
 
 @media screen and (max-width: 768px) {
     .search input {
         border: 1px solid white;
         outline: none;
-        /* padding: 0.7vw; */
+        padding: 0.7vw;
         margin: 1vw;
         border-radius: 0.5vw;
         width: 25vw;
@@ -143,9 +142,7 @@ body {
         color: white;
     }
 
-    .search input::placeholder {
-        font-size: 1.5vw;
-    }
+    
 }
 
 @media screen and (max-width: 450px) {

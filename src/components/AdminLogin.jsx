@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
 import AdminNav from "./AdminNav";
 import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "./Notfication";
 
 function AdminLoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [admin_id, setID] = useState('');
-    const [notification, setNotification] = useState({ message: '', type: '' });
+    const [notificationMessage, setnotificationMessage] = useState("");
     const navigate = useNavigate(); 
 
     const handleSubmit = async (e) => {
@@ -16,7 +17,10 @@ function AdminLoginForm() {
 
         // Validation for empty fields
         if (!email || !password || !admin_id) {
-            setNotification({ message: 'All fields are required.', type: 'error' });
+            setnotificationMessage("PLEASE FILL ALL FIELDS");
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
             return;
         }
 
@@ -41,15 +45,24 @@ function AdminLoginForm() {
                 localStorage.setItem('adminInfo', JSON.stringify(adminInfo));
 
                 // Notification Handling 
-                setNotification({ message: 'Login Successful!', type: 'success' });
+                setnotificationMessage("LOGIN SUCCESSFULL");
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
                 navigate('/adminpanel'); 
             } else {
                 const error = await response.json();
-                setNotification({ message: error.message || 'Login Failed. Please check your credentials.', type: 'error' });
+                setnotificationMessage("LOGIN FAILED");
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
             }
         } catch (err) {
             console.error(err);
-            setNotification({ message: 'An error occurred. Please try again.', type: 'error' });
+            setnotificationMessage("ERROR OCCURED PLEASE TRY AGAIN");
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
         }
     };
 
@@ -107,12 +120,7 @@ function AdminLoginForm() {
 </h3>
             </div>
 
-            {/* Notification */}
-            {notification.message && (
-                <div className={`notification ${notification.type}`}>
-                    {notification.message}
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
         </>
     );
 }

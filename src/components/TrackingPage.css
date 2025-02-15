@@ -16,7 +16,9 @@
     position: absolute;
     right: 0;
     height: 10vw;
-    width: 40%;
+    /* width: 40%; */
+    padding: 2vw;
+    border-radius: 0vw 0vw 0vw 2vw;
     display: flex;
     align-items: center;
     justify-content: center;

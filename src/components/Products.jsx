@@ -3,10 +3,11 @@ import './user-products.css';
 import ProductNav from './ProductNav';
 import { useParams } from 'react-router-dom';
 import API_BASE_URL from '../../config/ApiBaseUrl';
+import Notification from './Notfication';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
-    const [notificationMessage, setNotificationMessage] = useState(null); // State for the notification message
+    const [notificationMessage, setnotificationMessage] = useState("");
     const { categoryName } = useParams();
 
     useEffect(() => {
@@ -38,16 +39,16 @@ const Products = () => {
             });
             const data = await response.json();
             if (response.ok) {
-                setNotificationMessage(`${productName} Added To Cart!`); // Show notification on success
+                setnotificationMessage(`PRODUCT ADDED TO CART SUCCESSFULLY`);
                 setTimeout(() => {
-                    setNotificationMessage(null); // Hide notification after 5 seconds
-                }, 5000);
+                    setnotificationMessage("");
+                }, 6000);
             } else {
-                setNotificationMessage('Error adding product to cart.');
+                setnotificationMessage('ERROR ADDING THE PRODUCT');
             }
         } catch (err) {
             console.error('Error adding product to cart:', err);
-            setNotificationMessage('Error Adding Product To Cart.');
+            setnotificationMessage('ERROR ADDING THE PRODUCT TO CART');
         }
     };
 
@@ -58,7 +59,7 @@ const Products = () => {
                 {products.map((product, index) => (
                     <div className="product-box" key={index}>
                         <div className="product-img">
-                        <img src= {`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                            <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
 
                         </div>
                         <div className="product-info">
@@ -80,12 +81,8 @@ const Products = () => {
             </div>
 
             {/* Notification */}
-            {notificationMessage && (
-                <div className="notification-div-cart">
-                    {notificationMessage}
-                </div>
-            )}
-            
+            {notificationMessage && <Notification message={notificationMessage} />}
+
         </>
     );
 };

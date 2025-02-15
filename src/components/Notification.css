@@ -1,4 +1,34 @@
-.notification-div{
-    border: 2px solid red;
-    color: white;
+.notification-div-g {
+    background-color: #a18e5c;
+    color: #fff;
+    position: fixed;
+    border-radius: 1vw;
+    top: -100%;
+    padding: 1.5vw;
+    /* width: 33%; */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    font-family: Junge, serif;
+    font-weight: bolder;
+    animation: DropDownNotification 1s ease-in forwards, HideNotification 2s ease-in 5s forwards;
+    z-index: +1;
+}
+
+@keyframes DropDownNotification {
+    from {
+        opacity: 0;
+        top: -100%;
+    }
+    to {
+        opacity: 1;
+        top: 2%;
+    }
+}
+
+@keyframes HideNotification {
+    to {
+        opacity: 0;
+        top: -100%;
+    }
 }

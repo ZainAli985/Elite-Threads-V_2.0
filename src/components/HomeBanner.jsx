@@ -1,8 +1,10 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import './HomeBanner.css';
 import HomeNav from "./HomeNav";
 import Category from "./CategoryBox";
+import AboutUS from "./AboutUs";
+import Notification from "./Notfication";
 import API_BASE_URL from "../../config/ApiBaseUrl";
 
 // Importing Banner Images 
@@ -17,10 +19,14 @@ import model4 from "/assets/model4.png";
 
 function HomeBanner() {
     const navigate = useNavigate();
+    const [notificationMessage, setNotificationMessage] = useState("");
     const checkAuthorization = async () => {
         const token = localStorage.getItem('token');
         if (!token) {
-            alert('Unauthorized. Redirecting to login.');
+            setNotification('Unauthorized. Redirecting to login.')
+            setTimeout(() => {
+                setNotification('');
+            }, 6000);
             navigate('/login');
             return;
         }
@@ -35,7 +41,10 @@ function HomeBanner() {
             });
 
             if (!response.ok) {
-                alert('Invalid or expired token');
+                setNotificationMessage('Invalid or expired token');
+                setTimeout(() => {
+                    setNotificationMessage('')
+                }, 6000);
             }
 
             const data = await response.json();
@@ -116,6 +125,8 @@ function HomeBanner() {
         <hr  className="hr" />
 
         <Category/>
+        <AboutUS/>
+        {notificationMessage && <Notification message={notificationMessage} />}
         </>
     );
 }

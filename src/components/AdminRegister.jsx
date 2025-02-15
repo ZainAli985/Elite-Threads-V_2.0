@@ -3,12 +3,13 @@ import { useNavigate } from "react-router-dom";
 import "./RegisterForm.css";
 import AdminNav from './AdminNav'
 import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "./Notfication";
 
 function AdminRegisterForm() {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [notification, setNotification] = useState({ message: '', type: '' }); // State for notifications
+    const [notificationMessage, setnotificationMessage] = useState("");
     const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
@@ -37,17 +38,29 @@ function AdminRegisterForm() {
                     setPassword('');
 
                     // Show success notification
-                    setNotification({ message: 'User Created Successfully! LOG IN', type: 'success' });
+                    setnotificationMessage("REGISTERD SUCCESSFULLY");
+                    setTimeout(() => {
+                        setnotificationMessage('')
+                    }, 6000);
                     navigate('/Adminpanel')
                 } else {
-                    setNotification({ message: 'Registration Failed. Try Again.', type: 'error' }); // Error notification
+                    setnotificationMessage("REGISTRATION FAILED");
+                    setTimeout(() => {
+                        setnotificationMessage('')
+                    }, 6000);
                 }
             } catch (err) {
                 console.log(err);
-                setNotification({ message: 'An error occurred. Please try again later.', type: 'error' }); // Error notification
+                setnotificationMessage("AN ERROR OCCURED! PLEASE TRY AGAIN");
+                setTimeout(() => {
+                    setnotificationMessage('')
+                }, 6000);
             }
         } else {
-            setNotification({ message: 'Please fill in all fields.', type: 'error' }); // Error notification for empty fields
+            setnotificationMessage("PLEASE FILL THE REQUIRED INFO");
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
         }
     };
 
@@ -106,11 +119,7 @@ function AdminRegisterForm() {
             </div>
 
             {/* Notification */}
-            {notification.message && (
-                <div className={`notification ${notification.type}`}>
-                    {notification.message}
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
         </>
     );
 }
