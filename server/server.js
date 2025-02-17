@@ -31,6 +31,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 connectDB();
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);
 });

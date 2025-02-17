@@ -3,6 +3,7 @@ import './admin.css';
 import Sidemenu from './Sidemenu';
 import AdminNav from './AdminNav';
 import API_BASE_URL from '../../../config/ApiBaseUrl.js';
+import Notification from '../Notfication.jsx';
 
 const ProductForm = () => {
     const [imageFile, setImageFile] = useState(null);
@@ -10,7 +11,15 @@ const ProductForm = () => {
     const [price, setPrice] = useState('');
     const [desc, setDesc] = useState('');
     const [category, setCategory] = useState('');
-    const [notification, setNotification] = useState('');
+    const [notificationMessage, setnotificationMessage] = useState("");
+
+     // Limited Timeout For Notification
+     const showNotification = (message) => {
+        setnotificationMessage(message);
+        setTimeout(() => {
+            setnotificationMessage("");
+        }, 6000);
+    };
 
     const handleCategoryClick = (value) => {
         setCategory(value);
@@ -44,10 +53,7 @@ const ProductForm = () => {
             const data = await response.json();
 
             if (response.ok) {
-                setNotification('PRODUCT CREATED SUCCESSFULLY')
-                setTimeout(() => {
-                    setNotification('')
-                }, 8000);
+                showNotification('PRODUCT CREATED SUCCESSFULLY')
                 setImageFile(null);
                 setProductTitle('');
                 setPrice('');
@@ -60,6 +66,7 @@ const ProductForm = () => {
             console.error('Error Submitting Form', err);
             alert('An error occurred. Please try again later.');
         }
+       
     };
 
     return (
@@ -119,11 +126,8 @@ const ProductForm = () => {
                     </div>
                 </form>
             </div>
-            {notification && (
-                <div className="notification-div-admin-products">
-                    <h3>{notification}</h3>
-                </div>
-            )}
+            {notificationMessage && <Notification message={notificationMessage} />}
+
         </>
     );
 };
