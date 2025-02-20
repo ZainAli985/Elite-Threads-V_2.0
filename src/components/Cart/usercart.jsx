@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import './usercart.css'
 import { useNavigate } from "react-router-dom";
-import Notification from "./Notfication";
-import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "../Notfication";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const UserCart = () => {

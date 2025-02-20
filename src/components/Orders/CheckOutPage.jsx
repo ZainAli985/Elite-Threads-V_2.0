@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import './checkoutpage.css';
 import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "../../config/ApiBaseUrl";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
 import Notification from "./Notfication";
 
-function CheckoutBox() {
+function CheckoutPage() {
     const [total, setTotal] = useState(0);
     const [shipmentCharge, setShipmentCharge] = useState(0);
     const [gst, setGst] = useState(0);
@@ -131,4 +131,4 @@ function CheckoutBox() {
     );
 }
 
-export default CheckoutBox;
+export default CheckoutPage;

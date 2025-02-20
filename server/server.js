@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000; // Ensure there's a default port
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(loggerMiddleware)
+// app.use(loggerMiddleware)   //DISABLED IN PRODUCTION 
 
 const __dirname = path.resolve();
 

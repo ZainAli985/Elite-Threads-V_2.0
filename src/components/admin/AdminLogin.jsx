@@ -1,21 +1,32 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import React, { useState,  } from "react";
+import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import Navbar from './Navbar.jsx';
-import API_BASE_URL from "../../config/ApiBaseUrl";
-import Notification from "./Notfication.jsx";
+import AdminNavLogin from "./AdminNavLogin";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
+import Notification from "../Notfication";
 
-function LoginForm() {
+function AdminLoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [admin_id, setID] = useState('');
     const [notificationMessage, setnotificationMessage] = useState("");
-    const navigate = useNavigate();
+    const navigate = useNavigate(); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        const user = { email, password };
+
+        // Validation for empty fields
+        if (!email || !password || !admin_id) {
+            setnotificationMessage("PLEASE FILL ALL FIELDS");
+            setTimeout(() => {
+                setnotificationMessage('')
+            }, 6000);
+            return;
+        }
+
+        const user = { email, password, admin_id };
         try {
-            const response = await fetch(`${API_BASE_URL}/login`, {
+            const response = await fetch(`${API_BASE_URL}/adminlogin`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -25,24 +36,30 @@ function LoginForm() {
 
             if (response.ok) {
                 const data = await response.json();
-                let token = data.token;
-                let username = data.username;
+                const token = data.token;
+                const adminInfo = data.adminInfo
+                console.log(data)
+
+                // Items Set In Local Storage 
                 localStorage.setItem('token', token);
-                localStorage.setItem('username', username);
-                setnotificationMessage("LOGIN SUCCESSFUL"); // Success notification
+                localStorage.setItem('adminInfo', JSON.stringify(adminInfo));
+
+                // Notification Handling 
+                setnotificationMessage("LOGIN SUCCESSFULL");
                 setTimeout(() => {
                     setnotificationMessage('')
                 }, 6000);
-                navigate('/home'); // Redirect to home page
+                navigate('/adminpanel'); 
             } else {
+                const error = await response.json();
                 setnotificationMessage("LOGIN FAILED");
                 setTimeout(() => {
                     setnotificationMessage('')
                 }, 6000);
             }
         } catch (err) {
-            console.log(err);
-            setnotificationMessage("AN ERROR OCCURED! TRY AGAIN");
+            console.error(err);
+            setnotificationMessage("ERROR OCCURED PLEASE TRY AGAIN");
             setTimeout(() => {
                 setnotificationMessage('')
             }, 6000);
@@ -51,11 +68,11 @@ function LoginForm() {
 
     return (
         <>
-            <Navbar />
+           <AdminNavLogin/>
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
-                        <img src="/assets/LoginIcon.png" alt="" />
+                        <img src="/assets/LoginIcon.png" alt="Login Icon" />
                     </div>
                     <h1>Log In</h1>
                 </div>
@@ -75,18 +92,37 @@ function LoginForm() {
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <input
+                        type="password"
+                        placeholder="Admin ID"
+                        className="inputs"
+                        value={admin_id}
+                        onChange={(e) => setID(e.target.value)}
+                    />
+                    <input
                         type="submit"
                         value="Log In"
                         className="RegisterBtn"
                     />
                 </form>
+                <h3 style={{
+    padding: '20px', 
+    backgroundColor: '#f70101', 
+    color: '#fadd8a', 
+    border: '1px solid #f70101', 
+    borderRadius: '5px', 
+    textAlign: 'center', 
+    fontWeight: 'bold',
+    margin: '20px auto',
+    width: 'fit-content',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+}}>
+    ONLY FOR ADMINS
+</h3>
             </div>
 
-            {/* Notification */}
             {notificationMessage && <Notification message={notificationMessage} />}
-
         </>
     );
 }
 
-export default LoginForm;
+export default AdminLoginForm;

@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./RegisterForm.css";
-import AdminNav from './AdminNav'
-import API_BASE_URL from "../../config/ApiBaseUrl";
-import Notification from "./Notfication";
+import AdminNavLogin from "./AdminNavLogin";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
+import Notification from "../Notfication";
 
 function AdminRegisterForm() {
     const [username, setUsername] = useState('');
@@ -66,7 +66,7 @@ function AdminRegisterForm() {
 
     return (
         <>
-            <AdminNav />
+            <AdminNavLogin />
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">

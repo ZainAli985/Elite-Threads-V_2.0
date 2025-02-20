@@ -1,7 +1,5 @@
 // controllers/productController.js
 import Product from '../models/product-model.js';
-import multer from 'multer';
-
 // Controller to handle creating a product
 
 
