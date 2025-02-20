@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import RegisterForm from './components/RegisterForm.jsx';
 import LoginForm from './components/LoginForm.jsx';
 import HomeBanner from './components/HomeBanner.jsx';
-import AdminLogin from './components/AdminLogin.jsx';
+import AdminLogin from './components/admin/AdminLogin.jsx';
 import AdminRegisterForm from './components/AdminRegister.jsx';
 import AdminPanel from './components/admin/AdminPanel.jsx';
 import Products from './components/Products.jsx';

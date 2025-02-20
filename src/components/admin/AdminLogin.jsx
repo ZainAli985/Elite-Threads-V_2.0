@@ -1,16 +1,16 @@
-import React, { useState,  } from "react";
+import React, { useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import AdminNav from "./AdminNav";
-import API_BASE_URL from "../../config/ApiBaseUrl";
-import Notification from "./Notfication";
+import AdminNav from "../AdminNav";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
+import Notification from "../Notfication";
 
 function AdminLoginForm() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [admin_id, setID] = useState('');
     const [notificationMessage, setnotificationMessage] = useState("");
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -49,7 +49,7 @@ function AdminLoginForm() {
                 setTimeout(() => {
                     setnotificationMessage('')
                 }, 6000);
-                navigate('/adminpanel'); 
+                navigate('/adminpanel');
             } else {
                 const error = await response.json();
                 setnotificationMessage("LOGIN FAILED");
@@ -68,7 +68,7 @@ function AdminLoginForm() {
 
     return (
         <>
-           <AdminNav/>
+            <AdminNav />
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">
@@ -105,19 +105,19 @@ function AdminLoginForm() {
                     />
                 </form>
                 <h3 style={{
-    padding: '20px', 
-    backgroundColor: '#f70101', 
-    color: '#fadd8a', 
-    border: '1px solid #f70101', 
-    borderRadius: '5px', 
-    textAlign: 'center', 
-    fontWeight: 'bold',
-    margin: '20px auto',
-    width: 'fit-content',
-    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
-}}>
-    ONLY FOR ADMINS
-</h3>
+                    padding: '20px',
+                    backgroundColor: '#f70101',
+                    color: '#fadd8a',
+                    border: '1px solid #f70101',
+                    borderRadius: '5px',
+                    textAlign: 'center',
+                    fontWeight: 'bold',
+                    margin: '20px auto',
+                    width: 'fit-content',
+                    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)'
+                }}>
+                    ONLY FOR ADMINS
+                </h3>
             </div>
 
             {notificationMessage && <Notification message={notificationMessage} />}
