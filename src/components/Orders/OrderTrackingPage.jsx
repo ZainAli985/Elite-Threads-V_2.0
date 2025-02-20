@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import './TrackingPage.css'
 import { useNavigate } from "react-router-dom";
-import API_BASE_URL from "../../config/ApiBaseUrl";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
 
 function TrackingPage() {
     const [OrderedProducts, setOrderedProducts] = useState([]);

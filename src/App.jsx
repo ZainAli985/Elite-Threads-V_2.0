@@ -1,18 +1,17 @@
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import RegisterForm from './components/RegisterForm.jsx';
-import LoginForm from './components/LoginForm.jsx';
-import HomeBanner from './components/HomeBanner.jsx';
+import RegisterForm from './components/Auth/RegisterForm.jsx';
+import LoginForm from './components/Auth/LoginForm.jsx';
+import HomeBanner from './components/Home/HomeBanner.jsx';
 import AdminLogin from './components/admin/AdminLogin.jsx';
-import AdminRegisterForm from './components/AdminRegister.jsx';
+import AdminRegisterForm from './components/admin/AdminRegister.jsx';
 import AdminPanel from './components/admin/AdminPanel.jsx';
-import Products from './components/Products.jsx';
-import UserCart from './components/usercart.jsx';
-import CheckoutBox from './components/CheckOutPage.jsx';
-import LastPage from './components/LastPage.jsx';
+import Products from './components/Products/Products.jsx';
+import UserCart from './components/Cart/usercart.jsx';
+import CheckoutPage from './components/Orders/CheckOutPage.jsx';
+import LastPage from './components/Orders/LastPage.jsx';
 import AdminTrackingPanel from './components/admin/AdminTracking.jsx';
-import TrackingPage from './components/OrderTrackingPage.jsx';
-
+import TrackingPage from './components/Orders/OrderTrackingPage.jsx';
 
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/products/:categoryName" element={<Products />} />
           <Route path="/usercart" element={<UserCart />} />
-          <Route path="/checkout" element={<CheckoutBox />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/trackorders" element={<TrackingPage/>} />
           <Route path="/orderconfirmation" element={<LastPage/>} />
 

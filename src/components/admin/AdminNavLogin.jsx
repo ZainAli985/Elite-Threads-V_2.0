@@ -1,10 +1,8 @@
 import './LoginNavBar.css'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
 
-function AdminNav() {
+
+function AdminNavLogin() {
 // Preventing Default Behaviour Of A 
     const navigate  = useNavigate();
 
@@ -28,4 +26,4 @@ function AdminNav() {
     )
 }
 
-export default AdminNav;
+export default AdminNavLogin;

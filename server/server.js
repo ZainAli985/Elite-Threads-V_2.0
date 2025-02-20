@@ -11,7 +11,7 @@ const port = process.env.PORT || 3000; // Ensure there's a default port
 // Middleware
 app.use(cors());
 app.use(express.json());
-app.use(loggerMiddleware)
+// app.use(loggerMiddleware)   //DISABLED IN PRODUCTION 
 
 const __dirname = path.resolve();
 
@@ -31,6 +31,6 @@ app.use(express.static(path.join(__dirname, 'dist')));
 
 connectDB();
 
-app.listen(port, '0.0.0.0', () => {
+app.listen(port, () => {
     console.log(`Server is running on http://127.0.0.1:${port}`);
 });

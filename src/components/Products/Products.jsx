@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import './user-products.css';
 import ProductNav from './ProductNav';
 import { useParams } from 'react-router-dom';
-import API_BASE_URL from '../../config/ApiBaseUrl';
-import Notification from './Notfication';
+import API_BASE_URL from '../../../config/ApiBaseUrl';
+import Notification from '../Notfication';
 
 const Products = () => {
     const [products, setProducts] = useState([]);

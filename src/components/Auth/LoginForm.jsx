@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./LoginForm.css";
 import Navbar from './Navbar.jsx';
-import API_BASE_URL from "../../config/ApiBaseUrl";
-import Notification from "./Notfication.jsx";
+import API_BASE_URL from "../../../config/ApiBaseUrl.js";
+import Notification from "../Notfication.jsx";
 
 function LoginForm() {
     const [email, setEmail] = useState('');

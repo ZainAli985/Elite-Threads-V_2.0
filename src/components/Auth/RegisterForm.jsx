@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./RegisterForm.css";
 import Navbar from './Navbar.jsx';
-import API_BASE_URL from "../../config/ApiBaseUrl.js";
-import Notification from "./Notfication.jsx";
+import API_BASE_URL from "../../../config/ApiBaseUrl.js";
+import Notification from "../Notfication.jsx";
 
 function RegisterForm() {
     const [username, setUsername] = useState('');

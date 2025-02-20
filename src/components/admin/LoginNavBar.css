@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+}
+
+
+#LoginNav{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo-box{
+    display: flex;
+    justify-content: center;
+    height: 8rem;
+    width: 8rem;
+
+}
+
+.logo-box img{
+    height: 100%;
+    object-fit: cover;
+}
+.nav-links{
+    display: flex;
+    padding-right: 4vw;
+    gap: 2vw;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: #FADD8A;
+    font-size: 3vw;
+    font-family: "Junge", serif;
+}

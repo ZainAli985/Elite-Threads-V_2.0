@@ -1,7 +1,7 @@
 import React, { useState, } from "react";
 import { useNavigate } from "react-router-dom";
 import "./LoginForm.css";
-import AdminNav from "../AdminNav";
+import AdminNavLogin from "./AdminNavLogin";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
 import Notification from "../Notfication";
 
@@ -68,7 +68,7 @@ function AdminLoginForm() {
 
     return (
         <>
-            <AdminNav />
+           <AdminNavLogin/>
             <div className="form">
                 <div className="text-box">
                     <div className="loginicon">

@@ -4,8 +4,8 @@ import './HomeBanner.css';
 import HomeNav from "./HomeNav";
 import Category from "./CategoryBox";
 import AboutUS from "./AboutUs";
-import Notification from "./Notfication";
-import API_BASE_URL from "../../config/ApiBaseUrl";
+import Notification from "../Notfication";
+import API_BASE_URL from "../../../config/ApiBaseUrl";
 
 // Importing Banner Images 
 import covertext from "/assets/covertext.png";

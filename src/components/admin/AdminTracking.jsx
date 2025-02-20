@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./OrdersPanel.css";
 import API_BASE_URL from '../../../config/ApiBaseUrl.js';
+import Notification from "../Notfication.jsx";
 
 function AdminTrackingPanel() {
     const [orders, setOrders] = useState([]);
     const [expandedOrderId, setExpandedOrderId] = useState(null); // State to track expanded order
-    const [notification, setNotification] = useState('');
+    const [notificationMessage, setnotificationMessage] = useState("");
 
     const fetchOrders = async () => {
         try {
@@ -34,10 +35,7 @@ function AdminTrackingPanel() {
 
             const data = await response.json();
             if (response.ok) {
-                setNotification('Product Status Changed Successfully');
-                setTimeout(() => {
-                    setNotification('')
-                }, 8000);
+                showNotification('Product Status Changed Successfully');
                 fetchOrders(); // Fetch the updated orders list after status change
             } else {
                 alert(data.message || "Failed to change status");
@@ -50,6 +48,13 @@ function AdminTrackingPanel() {
     // Toggle the expanded order
     const toggleOrderDetails = (orderId) => {
         setExpandedOrderId((prevOrderId) => (prevOrderId === orderId ? null : orderId));
+    };
+    // Limited Timeout For Notification
+    const showNotification = (message) => {
+        setnotificationMessage(message);
+        setTimeout(() => {
+            setnotificationMessage(""); 
+        }, 6000);
     };
 
     useEffect(() => {
@@ -136,10 +141,10 @@ function AdminTrackingPanel() {
                                         <td colSpan="5">
                                             <h5 className="shipping-address-h">Shipping Address:-</h5>
                                             <p className="shipping-details-p" >CITY: {order.shippingAddress.city} <br />
-                                            COUNTRY: {order.shippingAddress.country} <br />
-                                            POSTAL: {order.shippingAddress.postalCode} <br />
-                                            ADDRESS: {order.shippingAddress.address} <br />
-                                            LANDMARK: {order.shippingAddress.landmark}
+                                                COUNTRY: {order.shippingAddress.country} <br />
+                                                POSTAL: {order.shippingAddress.postalCode} <br />
+                                                ADDRESS: {order.shippingAddress.address} <br />
+                                                LANDMARK: {order.shippingAddress.landmark}
                                             </p>
                                         </td>
                                     </tr>
@@ -149,11 +154,7 @@ function AdminTrackingPanel() {
                         ))}
                     </tbody>
                 </table>
-                {notification && (
-                    <div className="notification-div-admintracking">
-                        <h3>{notification}</h3>
-                    </div>
-                )}
+                {notificationMessage && <Notification message={notificationMessage} />}
             </div>
         </>
     );
