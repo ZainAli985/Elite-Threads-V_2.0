@@ -25,12 +25,11 @@ body {
 .logo img {
     width: 20%;
     position: absolute;
-    cursor: pointer;
 }
 
 .essential-box {
-    display: flex;
     /* border: 2px solid white; */
+    display: flex;
     align-items: center;
 }
 
@@ -43,7 +42,7 @@ body {
 }
 
 .search input {
-    border: 2px solid white;
+    /* border: 2px solid white; */
     outline: none;
     padding: 1vw;
     font-size: 1vw;
@@ -75,8 +74,7 @@ body {
 }
 
 .cart {
-    /* border: 2px solid purple; */
-    margin-right: 2vw;
+    margin: 0;
     padding: 1vw;
 }
 
@@ -87,8 +85,79 @@ body {
 
 .cart img:hover {
     cursor: pointer;
+    filter: invert(0.5);
+}
+.user-profile{
+    /* border: 2px solid red; */
+    background-color: #020816;
+    border-radius: 50%;
+    width: 4vw;
+    margin-right: 2vw;
+    cursor: pointer;
+    padding-top: 0.3vw;
+}
+.user-profile:hover{
+    background-color: #000;
+}
+.user-profile img{
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
+.dropdown-menu{
+    background-color: #050d21ce;
+    border-radius: 1vw;
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    height: 0vw;
+    gap: 1vw;
+    position: absolute;
+    top: 8vw;
+    right: 1vw;
+    align-items: center;
+    justify-content: center;
+    width: 25vw;
+    padding: 10vw;
+}
+.dropdown-menu:hover{
+    background-color: #050d21ec;
+}
+.dropdown-options{
+    /* border: 2px solid yellow; */
+    border-radius: 0.8vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 3vw;
+    text-decoration: none;
+    background-color: #948352bd;
+    color: white;
+    font-family: Junge, serif;
+    width: 18vw;
+    height: 15vw;
+    padding: 0.5vw;
+    gap: 0.5vw;
+}
+.dropdown-options:hover{
+    background-color: #ac9653;
+}
+.dropdown-options p{
+    font-size: 1.8vw;
+}
+.option-icon{
+    /* border: 2px solid red; */
+    height: 3vw;
+}
+.option-icon img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/* PRODUCT HEADER FOR CATEGORY PAGE */
 .product-header {
     /* border: 2px solid blue; */
     display: flex;
@@ -110,7 +179,7 @@ body {
     width: 100%;
     position: absolute;
 }
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 2200px) {
     .search input {
         border: 6px solid white;
         outline: none;

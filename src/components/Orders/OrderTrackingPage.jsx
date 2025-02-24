@@ -39,7 +39,7 @@ function TrackingPage() {
     return (
         <>
             <div className="tracking-header">
-                <img src="/assets/logo.png" alt="" onClick={navigateHome} />
+                <img src="/assets/Logo.png" alt="" onClick={navigateHome} />
                 <div className="net-total-container">
                     <h2>NET TOTAL<sub>(Incl Tax)</sub> : ${netTotal}/-</h2>
                 </div>

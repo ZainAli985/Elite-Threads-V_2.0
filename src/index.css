@@ -12,4 +12,6 @@ body{
     background-repeat: no-repeat;
     background-size: cover;
 }
-
+body::-webkit-scrollbar{
+    display: none;
+}

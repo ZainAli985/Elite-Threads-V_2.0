@@ -7,7 +7,7 @@
 }
 .tracking-header img{
     /* border: 2px solid salmon; */
-    height: 20vw;
+    height: 13vw;
     cursor: pointer;
 }
 
@@ -41,18 +41,24 @@
     gap: 2vw;
     padding: 2vw;
     /* border: 2px solid red; */
+    height: 80vh;
+    overflow-x: auto;
+    padding-bottom: 10vw;
+}
+.user-orders::-webkit-scrollbar{
+    appearance: none;
 }
 .user-orders h1{
     font-family: Junge, serif;
-    font-size: 3vw;
+    font-size: 5vw;
     color: #948352;
-    padding: 2vw 2vw 2vw 5vw;
+    padding: 0vw 0vw 0vw 5vw;
     font-weight: 200;
 }
 .orders-container{
     display: flex;
     /* border: 2px solid saddlebrown; */
-    padding: 2vw;
+    padding: 1.5vw;
     background-color: #0A142D;
     width: 90%;
     margin: auto;
@@ -87,7 +93,7 @@
     /* border: 2px solid white; */
     justify-content: center;
     align-items: center;
-    padding-left: 22vw;
+    padding-left: 13vw;
 }
 .status-container h2{
     padding: 1vw;

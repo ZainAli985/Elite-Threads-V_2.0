@@ -16,6 +16,7 @@ import model1 from "/assets/model1.png";
 import model2 from "/assets/model2.png";
 import model3 from "/assets/model3.png";
 import model4 from "/assets/model4.png";
+import Footer from "./Footer";
 
 function HomeBanner() {
     const navigate = useNavigate();
@@ -23,11 +24,11 @@ function HomeBanner() {
     const checkAuthorization = async () => {
         const token = localStorage.getItem('token');
         if (!token) {
-            setNotification('Unauthorized. Redirecting to login.')
+            setNotificationMessage('SESSION EXPIRED PLEASE LOGIN AGAIN'); 
             setTimeout(() => {
-                setNotification('');
+                setNotificationMessage('');
+                navigate('/login');
             }, 6000);
-            navigate('/login');
             return;
         }
 
@@ -41,7 +42,7 @@ function HomeBanner() {
             });
 
             if (!response.ok) {
-                setNotificationMessage('Invalid or expired token');
+                setNotificationMessage('Invalid Session');
                 setTimeout(() => {
                     setNotificationMessage('')
                 }, 6000);
@@ -126,6 +127,7 @@ function HomeBanner() {
 
         <Category/>
         <AboutUS/>
+        <Footer/>
         {notificationMessage && <Notification message={notificationMessage} />}
         </>
     );

@@ -75,9 +75,7 @@ body {
 }
 
 .cart {
-    /* border: 2px solid purple; */
-    margin-right: 2vw;
-    padding: 1vw;
+    padding: 0.8vw;
 }
 
 .cart img {
@@ -110,7 +108,7 @@ body {
     width: 100%;
     position: absolute;
 }
-@media screen and (min-width: 1800px) {
+@media screen and (min-width: 2200px) {
     .search input {
         border: 6px solid white;
         outline: none;

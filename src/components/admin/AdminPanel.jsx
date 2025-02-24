@@ -14,7 +14,7 @@ function AdminPanel() {
   const checkAuthorization = async () => {
     const token = localStorage.getItem('token');
     if (!token) {
-      alert('Unauthorized. Redirecting to login.');
+      alert('SESSION EXPIRED PLEASE LOGIN AGAIN');
       navigate('/adminlogin');
       return;
     }
