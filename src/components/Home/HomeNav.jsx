@@ -11,6 +11,15 @@ function HomeNav() {
     const [showDropdown, setShowDropdown] = useState(false);
     const timeoutRef = useRef(null)
 
+    const handleLogout = (e) => {
+        e.preventDefault();
+        localStorage.clear();
+    
+        window.history.replaceState(null, "", "/login");
+        window.location.href = "/login";
+    };
+    
+
     const handleMouseEnter = () => {
         if (timeoutRef.current) {
             clearTimeout(timeoutRef.current);
@@ -62,7 +71,7 @@ function HomeNav() {
                                     </div>
                                     <p>ORDERS</p>
                                 </a>
-                                <a className="dropdown-options" href="">
+                                <a className="dropdown-options" href="" onClick={handleLogout}>
                                     <div className="option-icon">
                                         <img src="/assets/logout.png" alt="Log Out" />
                                     </div>
