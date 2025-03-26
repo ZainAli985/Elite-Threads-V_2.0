@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
+import '../utils/utility.css'
 
 const ProductList = () => {
     const [products, setProducts] = useState([]);

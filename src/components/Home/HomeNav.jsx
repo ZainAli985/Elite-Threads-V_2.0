@@ -38,6 +38,9 @@ function HomeNav() {
     function navigateTrackOrder() {
         navigate('/trackorders');
     }
+    function navigateProfile(){
+        navigate('/profile')
+    }
 
     return (
         <>
@@ -47,7 +50,7 @@ function HomeNav() {
                 </div>
                 <div className="essential-box">
                     <div className="search">
-                        <input type="search" name="" id="" placeholder="Search For Your Look" />
+                        <input type="search" placeholder="Search For Your Look" disabled />
                         <img src="/assets/search-logo.png" alt="Search Logo" srcset="" />
                     </div>
                     <div className="cart">
@@ -59,19 +62,19 @@ function HomeNav() {
                         </div>
                         {showDropdown && (
                             <div className="dropdown-menu">
-                                <a className="dropdown-options" href="">
+                                <a className="dropdown-options" href="#" onClick={navigateProfile}>
                                     <div className="option-icon">
                                         <img src="/assets/userlogo-black.png" alt="User-Logo" />
                                     </div>
                                     <p>PROFILE</p>
                                 </a>
-                                <a className="dropdown-options" onClick={navigateTrackOrder}>
+                                <a className="dropdown-options" href="#" onClick={navigateTrackOrder}>
                                     <div className="option-icon">
                                         <img src="/assets/package.png" alt="Package" />
                                     </div>
                                     <p>ORDERS</p>
                                 </a>
-                                <a className="dropdown-options" href="" onClick={handleLogout}>
+                                <a className="dropdown-options" href="#" onClick={handleLogout}>
                                     <div className="option-icon">
                                         <img src="/assets/logout.png" alt="Log Out" />
                                     </div>

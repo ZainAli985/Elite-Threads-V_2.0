@@ -1,0 +1,31 @@
+.profile-dash-parent{
+    /* border: 2px solid red; */
+    margin-left: 17%;
+}
+.pfp-txt{
+    /* border: 2px solid green; */
+    display: inline-block;
+    font-size: 2vw;
+    padding: 1vw;
+    position: absolute;
+}
+.pfp-info-boxes{
+    /* border: 2px solid yellow; */
+    flex-direction: column;
+    gap: 2vw;
+    padding: 2vw;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10vw;
+}
+.pfp-info-box{
+    /* border: 2px solid greenyellow; */
+    height: 4vw;
+    width: 25vw;
+    border-radius: 0.7vw;
+    align-items: center;
+    padding: 2vw;
+    background-color: #0A142D;
+    font-size: 1.2vw;
+    box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+}

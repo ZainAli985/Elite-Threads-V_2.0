@@ -1,0 +1,82 @@
+.p-v-parent{
+    /* border: 2px solid red; */
+    display: flex;
+    color: aliceblue;
+    margin-top: 20%;
+    z-index: +1;
+    position: absolute;
+    width: 100%;
+    padding: 2vw;
+    gap: 3vw;
+    justify-content: space-around;
+}
+.p-img-bg{
+    /* border: 2px solid yellow; */
+    padding: 2vw;
+    background-color: #020C1E;
+    border-radius: 2vw;
+}
+.p-v-img img{
+    border-radius: 2.5vw;
+    object-fit: cover;
+    height: 45vw;
+    width: 32vw;
+}
+.p-details-parent{
+    display: flex;
+    flex-direction: column;
+    gap: 3vw;
+    padding: 2vw;
+    display: inline-flex;
+    width: 50%;
+}
+.p-d-name{
+    font-size: 2vw;
+}
+.p-d-price{
+    font-size: 4vw;
+}
+.p-d-qty{
+    background-color: #000000;
+    display: inline-flex;
+    font-size: 2vw;
+    gap: 1.2vw;
+    align-items: center;
+    justify-content: center;
+    width: 15vw;
+    padding: 1vw;
+    border-radius: 1vw;
+}
+#qty-num-p-v{
+    color: #9c8a58;
+}
+.p-d-btns-parent{
+    display: flex;
+    padding: 1vw;
+    color: #948352;
+    gap: 2vw;
+}
+.p-d-btns-parent button{
+    font-family: "Junge", serif;
+    padding: 1vw;
+    border-radius: 0.5vw;
+    border: none;
+    outline: none;
+    background-color: #000000;
+    color: #948352;
+    font-size: 1.5vw;
+    cursor: pointer;
+}
+.p-d-btns-parent button:hover{
+    background-color: #020C1E;
+    color: #fff;
+}
+.p-d-description{
+    color: #948352;
+    width: 90%;
+    padding: 2vw;
+    border-radius: 1.2vw;
+    font-size: 1.2vw;
+    background-color: #020C1E;
+    font-family: Junge, serif;
+}

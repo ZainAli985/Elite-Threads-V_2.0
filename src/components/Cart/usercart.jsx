@@ -3,6 +3,7 @@ import './usercart.css'
 import { useNavigate } from "react-router-dom";
 import Notification from "../Notfication";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
+import '../utils/utility.css'
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const UserCart = () => {
@@ -172,7 +173,7 @@ const UserCart = () => {
         <>
             <div className="user-cart">
                 <div className="header">
-                    <h1>MY CART</h1>
+                    <h1 className="g-t">MY CART</h1>
                 </div>
                 <div className="cart-container">
                     {cartProducts.length != 0 ? (

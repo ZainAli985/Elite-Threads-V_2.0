@@ -1,5 +1,6 @@
 import React from "react";
 import './footer.css'
+import '../utils/utility.css'
 
 function Footer() {
     return (
@@ -12,7 +13,7 @@ function Footer() {
                     <a href="#">Terms & Conditions</a>
                 </div>
                 <div className="contact-links">
-                    <h2>BE BOLD BE TIMELESS</h2>
+                    <h2 className="g-t">BE BOLD BE TIMELESS</h2>
                     <div className="contact-options">
                         <h5>CONTACT US</h5>
                         <div className="social-logos">

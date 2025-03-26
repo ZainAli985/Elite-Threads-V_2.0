@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './TrackingPage.css'
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
+import '../utils/utility.css'
 
 function TrackingPage() {
     const [OrderedProducts, setOrderedProducts] = useState([]);
@@ -41,13 +42,13 @@ function TrackingPage() {
             <div className="tracking-header">
                 <img src="/assets/Logo.png" alt="" onClick={navigateHome} />
                 <div className="net-total-container">
-                    <h2>NET TOTAL<sub>(Incl Tax)</sub> : ${netTotal}/-</h2>
+                    <h2 className="g-t">NET TOTAL<sub>(Incl Tax)</sub> : ${netTotal}/-</h2>
                 </div>
             </div>
 
 
             <div className="user-orders">
-                <h1>Orders</h1>
+                <h1 className="g-t">Orders</h1>
 
                 {OrderedProducts.length > 0 ? (
                     OrderedProducts.map((order, index) => (

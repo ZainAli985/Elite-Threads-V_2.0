@@ -1,0 +1,70 @@
+.g-t {
+  font-family: "KoHo", sans-serif;
+  background: linear-gradient(
+    to right,
+    #534c38,
+    #b9a97c,
+    #574f3a,
+    #b6a67a,
+    #59513c,
+    #b4a478
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.d-bg {
+  background-color: #050f26;
+}
+.bold {
+  font-weight: bolder;
+}
+.flex {
+  display: flex;
+}
+.a-center {
+  align-items: center;
+}
+.grid {
+  display: grid;
+}
+.d-txt-bg {
+  color: #948352;
+}
+.d-none {
+  display: none;
+}
+.w-300 {
+  font-weight: 300;
+}
+.b-red {
+  border: 2px solid red;
+}
+.t-none {
+  text-decoration: none;
+}
+.koho {
+  font-family: "KoHo", sans-serif;
+}
+.gap-1 {
+  gap: 1vw;
+}
+.m-t-2{
+  margin-top: 2vw;
+}
+.default-frnt-color{
+  color: #b1964c;
+}
+.size-2{
+  font-size: 2.5vw;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+.fa-plus:hover{
+  color:  #9c8a58;
+}
+.normal-icon {
+  -webkit-text-fill-color: initial !important; /* Reset the effect */
+  color: #9c8a58; /* Set the color manually */
+}

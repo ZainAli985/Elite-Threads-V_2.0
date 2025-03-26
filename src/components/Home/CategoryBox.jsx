@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import "./category.css";
+import '../utils/utility.css'
 
 function Category() {
   const navigate = useNavigate();
@@ -12,7 +13,7 @@ function Category() {
 
   return (
     <div className="cat-parent">
-      <h1>CATEGORIES</h1>
+      <h1 className="g-t">CATEGORIES</h1>
       <div className="cat-boxes">
         <div
           className="cat-box"

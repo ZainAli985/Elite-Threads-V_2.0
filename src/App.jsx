@@ -12,7 +12,8 @@ import CheckoutPage from './components/Orders/CheckOutPage.jsx';
 import LastPage from './components/Orders/LastPage.jsx';
 import AdminTrackingPanel from './components/admin/AdminTracking.jsx';
 import TrackingPage from './components/Orders/OrderTrackingPage.jsx';
-
+import UserProfile from './components/Client/UserProfile.jsx';
+import ProductPage from './components/Products/ProductPage.jsx';
 
 function App() {
 
@@ -27,6 +28,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/products/:categoryName" element={<Products />} />
+          <Route path="/Productview" element={<ProductPage/>}/>
           <Route path="/usercart" element={<UserCart />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/trackorders" element={<TrackingPage/>} />
@@ -40,6 +42,8 @@ function App() {
           <Route path="/adminlogin" element={<AdminLogin />} /> 
           <Route path="/orderspanel" element={<AdminTrackingPanel/>} />
 
+          {/* User Profile  */}
+          <Route path="/profile/*" element={<UserProfile/>} />
 
           <Route path="*" element={<LoginForm />} />
         </Routes>

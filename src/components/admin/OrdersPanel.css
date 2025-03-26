@@ -59,7 +59,7 @@ td {
 }
 
 /* Button Styling */
-button {
+/* button {       Conflict wiht profile reorder btn
     background-color: #444;
     color: white;
     border: none;
@@ -68,11 +68,11 @@ button {
     border-radius: 0.5vw;
     transition: 0.3s;
     margin-top: 1vw;
-}
+} */
 
-button:hover {
+/* button:hover {
     background-color: #555;
-}
+} */
 
 /* Nested Table */
 td > table {

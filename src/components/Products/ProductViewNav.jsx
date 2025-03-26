@@ -3,10 +3,10 @@ import './HomeNav.css'
 import { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState } from "react";
+import '../utils/utility.css'
 
 
-
-function ProductNav(catgName) {
+const ProductViewNav = () => {
     const {categoryName} = useParams();
     const navigate = useNavigate();
     function navigateCart() {
@@ -22,7 +22,9 @@ function ProductNav(catgName) {
             window.history.replaceState(null, "", "/login");
             window.location.href = "/login";
         };
-        
+        const hadnlePreviousTab = ()=>{
+            window.history.back();
+        }
     
         const handleMouseEnter = () => {
             if (timeoutRef.current) {
@@ -52,12 +54,9 @@ function ProductNav(catgName) {
                 <div class="logo">
                     <img src="/assets/Logo.png" alt="Logo" />
                 </div>
-                <div class="essential-box">
-                    <div class="search">
-                        <input type="search" name="" id="" placeholder="Search For Your Look" />
-                        <img src="/assets/search-logo.png" alt="" srcset="" />
-                    </div>
-                    <div class="cart">
+                <div class="essential-box gap-1 m-t-2">
+                <i class="fa-solid fa-arrow-left default-frnt-color size-2 cursor-pointer" onClick={hadnlePreviousTab} ></i>
+                    <div className="cart">
                         <img src="/assets/cart-logo.png" alt=""  onClick={navigateCart}/>
                     </div>
                     <div className="user-dropdown-container" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -89,12 +88,8 @@ function ProductNav(catgName) {
                         </div>
                 </div>
             </nav>
-            <div class="product-header">
-                <h1 className="g-t">{categoryName}</h1>
-            </div>
-            <hr class="hr" />
         </>
     )
 }
 
-export default ProductNav;
+export default ProductViewNav;
