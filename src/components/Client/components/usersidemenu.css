@@ -1,13 +1,19 @@
 .user-side-menu {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: inline-flex;
-  flex-direction: column;
-  gap: 5vw;
-  height: 75vh;
-  justify-content: center;
-  padding: 1vw;
-  position: absolute;
-  z-index: +1;
+      flex-direction: column;
+      gap: 5vw;
+      height: 40vh;
+      justify-content: center;
+      padding: 1vw;
+      position: absolute;
+      z-index: +1;
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+      border-bottom-right-radius: 2vw;
+      border-top-right-radius: 2vw;
+      top: 65%;
+      left: 0;
+      transform: translateY(-50%); 
 }
 .user-side-menu a {
   text-decoration: none;

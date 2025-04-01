@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './user-products.css';
 import ProductNav from './ProductNav';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import API_BASE_URL from '../../../config/ApiBaseUrl';
 import Notification from '../Notfication';
 
@@ -9,6 +9,11 @@ const Products = () => {
     const [products, setProducts] = useState([]);
     const [notificationMessage, setnotificationMessage] = useState("");
     const { categoryName } = useParams();
+    const navigate = useNavigate()
+
+    function handleProductViewNavigation(product_id){
+        navigate(`/Productview/${product_id}`)
+    }
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -57,9 +62,9 @@ const Products = () => {
             <ProductNav />
             <div className="products-container-user">
                 {products.map((product, index) => (
-                    <div className="product-box" key={index}>
+                    <div className="product-box" key={index} onClick={()=> handleProductViewNavigation(product.product_id)} >
                         <div className="product-img">
-                            <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                            <img src={`${product.image}`} alt={product.name} />
 
                         </div>
                         <div className="product-info">

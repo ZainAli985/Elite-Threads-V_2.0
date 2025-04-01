@@ -28,7 +28,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/products/:categoryName" element={<Products />} />
-          <Route path="/Productview" element={<ProductPage/>}/>
+          <Route path="/Productview/:product_id" element={<ProductPage/>}/>
           <Route path="/usercart" element={<UserCart />} />
           <Route path="/checkout" element={<CheckoutPage />} />
           <Route path="/trackorders" element={<TrackingPage/>} />

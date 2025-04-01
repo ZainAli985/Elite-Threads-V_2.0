@@ -9,6 +9,7 @@
     padding: 2vw;
     gap: 3vw;
     justify-content: space-around;
+    z-index: -1; /*so that dropdown menu can work proper*/
 }
 .p-img-bg{
     /* border: 2px solid yellow; */
@@ -59,7 +60,7 @@
 .p-d-btns-parent button{
     font-family: "Junge", serif;
     padding: 1vw;
-    border-radius: 0.5vw;
+    border-radius: 1vw;
     border: none;
     outline: none;
     background-color: #000000;

@@ -1,6 +1,9 @@
 .profile-dash-parent{
     /* border: 2px solid red; */
-    margin-left: 17%;
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%,-50%);
 }
 .pfp-txt{
     /* border: 2px solid green; */

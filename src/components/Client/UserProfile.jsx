@@ -4,6 +4,7 @@ import UserProfileNav from "./components/UserProfileNav";
 import ProfileDashBoard from "./components/ProfileDash";
 import { Route, Routes } from "react-router-dom";
 import DeliveredOrders from "./components/DeliveredOrders";
+import SettingsUser from "./components/SettingsUser";
 
 function UserProfile() {
     return (
@@ -12,7 +13,8 @@ function UserProfile() {
             <UserSideMenu />
             <Routes>
                 <Route path="dashboard" element={<ProfileDashBoard />} />
-                <Route path="deliveredorders" element={<DeliveredOrders/>}/>
+                <Route path="deliveredorders" element={<DeliveredOrders />} />
+                <Route path="settingsuser" element={<SettingsUser />} />
                 {/* Default Path  */}
                 <Route path="*" element={<ProfileDashBoard />} />
             </Routes>

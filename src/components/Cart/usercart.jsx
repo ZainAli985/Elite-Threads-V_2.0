@@ -180,7 +180,7 @@ const UserCart = () => {
                         cartProducts.map((product, index) => (
                             <div key={index} className="cart-product">
                                 <div className="cart-product-img">
-                                    <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                                    <img src={`${product.image}`} alt={product.name} />
                                 </div>
                                 <div className="product-details">
                                     <h2>${product.price}/-</h2>

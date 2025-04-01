@@ -171,3 +171,45 @@ export const decreaseCartQuantity = async (req, res) => {
         });
     }
 };
+
+export const ProductPageCartHandler = async (req, res) => {
+    try {
+        const { ProductName: ProductTitle, username: Username, productqty: ProductQty } = req.body;
+
+        const foundProduct = await Product.findOne({ name: ProductTitle });
+
+        if (!foundProduct) {
+            res.status(404).json({
+                message: 'USER NOT FOUND'
+            })
+        }
+        const foundUser = await User.findOne({ username: Username });
+
+        if (!foundUser) {
+            res.status(404).json({
+                message: 'USER NOT FOUND'
+            })
+        }
+        let productInCart = foundUser.cart.products.find(product => product.name === ProductTitle);
+        if (productInCart) {
+            productInCart.qty += ProductQty;
+        }
+        else {
+            foundUser.cart.products.push({
+                product_id: foundProduct.product_id,
+                image: foundProduct.image,
+                name: foundProduct.name,
+                price: foundProduct.price,
+                desc: foundProduct.desc,
+                category: foundProduct.category,
+                qty: ProductQty
+            });
+        }
+
+        await foundUser.save();
+        res.status(200).json({ message: 'PRODUCT CREATED IN CART SUCCESSFULLY' })
+    }
+    catch (e) {
+        res.status(500).json({ message: `Server Error At Product View Controller${e}` })
+    }
+}

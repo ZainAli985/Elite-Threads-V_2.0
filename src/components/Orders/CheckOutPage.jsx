@@ -26,7 +26,7 @@ function CheckoutPage() {
     const sendShippingData = async (e) => {
         e.preventDefault();
         const shippingData = { country, city, address, landmark, postalCode };
-
+        if(country!='' && city!='' && address!='' && postalCode!='' && landmark!=''){
         try {
             const username = localStorage.getItem('username');
             const response = await fetch(`${API_BASE_URL}/placeorder`, {
@@ -49,6 +49,10 @@ function CheckoutPage() {
         catch (err) {
             console.error("Error:", err);
         }
+    }
+    else{
+        alert('Kindly Fill All The Shipping Details')
+    }
     };
 
     // Net Total Function 
@@ -119,7 +123,7 @@ function CheckoutPage() {
                         <h5>GST%: ${gst.toFixed(2)}/-</h5>
                     </div>
                     <div className="net-total">
-                        <h3>NET TOTAL: ${netTotal}/-</h3>
+                        <h3>NET TOTAL: ${netTotal.toFixed(2)}/-</h3>
                     </div>
                 </div>
                 <div className="place-order-btn">

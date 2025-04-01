@@ -75,7 +75,7 @@ const AdminProducts = () => {
               onClick={() => deleteProduct(product.name)}
             >
               <div className="product-img">
-                <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                <img src={`${product.image}`} alt={product.name} />
               </div>
               <div className="product-info">
                 <div className="price">

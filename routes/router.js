@@ -3,10 +3,10 @@ const router = express.Router();
 
 
 import {authenticateToken} from '../middlewares/auth.js'
-import { CreateProduct,  deleteProducts, getAdminProducts, getProducts } from '../controllers/ProductController.js';
+import { CreateProduct,  deleteProducts, getAdminProducts, getProducts, ProductViewData } from '../controllers/ProductController.js';
 import { register, login } from '../controllers/RegisterController.js';
 import { Adminlogin, AdminRegister } from '../controllers/AdminRegisterController.js';
-import { CreateCartProducts, decreaseCartQuantity, DelteCartProducts, increaseCartQuantity, userCart } from '../controllers/CartController.js';
+import { CreateCartProducts, decreaseCartQuantity, DelteCartProducts, increaseCartQuantity, ProductPageCartHandler, userCart } from '../controllers/CartController.js';
 import { CheckedOutProducts, OrderStatus, PlaceOrder, TrackOrder, UserOrders } from '../controllers/OrderHandling.js';
 import { upload } from '../middlewares/multer-upload-middleware.js';
 
@@ -41,6 +41,7 @@ router.post('/updateorderstatus', OrderStatus)
 
 // Cart Routes 
 router.post('/createcartproducts', CreateCartProducts);
+router.post('/createproductviewcartproduct', ProductPageCartHandler)
 router.post('/getusercart', userCart);
 router.post('/deletecartproduct', DelteCartProducts);
 router.post('/increaseqty',increaseCartQuantity);
@@ -54,7 +55,7 @@ router.post('/placeorder', PlaceOrder);
 
 // Public Routes 
 router.get('/getproducts/:categoryName', getProducts);
-
+router.post('/productviewdata/:product_id', ProductViewData);
 
 
 export default router;
