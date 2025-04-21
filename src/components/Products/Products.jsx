@@ -4,10 +4,12 @@ import ProductNav from './ProductNav';
 import { useNavigate, useParams } from 'react-router-dom';
 import API_BASE_URL from '../../../config/ApiBaseUrl';
 import Notification from '../Notfication';
+import Loader from '../utils/Loader';
 
 const Products = () => {
     const [products, setProducts] = useState([]);
     const [notificationMessage, setnotificationMessage] = useState("");
+    const [showLoader, setShowLoader] = useState(true);
     const { categoryName } = useParams();
     const navigate = useNavigate()
 
@@ -20,7 +22,10 @@ const Products = () => {
             try {
                 const response = await fetch(`${API_BASE_URL}/getproducts/${categoryName}`);
                 const data = await response.json();
-                setProducts(data.products);
+                if(response.ok){
+                    setProducts(data.products);
+                    setShowLoader(false)
+                }
             } catch (err) {
                 console.error('Error fetching products:', err);
             }
@@ -58,6 +63,7 @@ const Products = () => {
     };
 
     return (
+        showLoader ? <Loader/> : (
         <>
             <ProductNav />
             <div className="products-container-user">
@@ -89,6 +95,7 @@ const Products = () => {
             {notificationMessage && <Notification message={notificationMessage} />}
 
         </>
+        )
     );
 };
 

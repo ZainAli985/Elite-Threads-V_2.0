@@ -14,6 +14,7 @@ import AdminTrackingPanel from './components/admin/AdminTracking.jsx';
 import TrackingPage from './components/Orders/OrderTrackingPage.jsx';
 import UserProfile from './components/Client/UserProfile.jsx';
 import ProductPage from './components/Products/ProductPage.jsx';
+import Loader from './components/utils/Loader.jsx';
 
 function App() {
 

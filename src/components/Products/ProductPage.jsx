@@ -4,6 +4,7 @@ import "../utils/utility.css";
 import "./ProductViewSection.css";
 import { useNavigate, useParams } from "react-router-dom";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
+import Loader from '../utils/Loader.jsx'
 const ProductPage = () => {
 
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const ProductPage = () => {
     const username = localStorage.getItem('username');
     const ProductTotal = ProductQty * ProductPrice;
     const decryptedProductId = Number(product_id.product_id);
+    const [showLoader, setShowLoader] = useState(true);
 
 
     const ProductDetails = async () => {
@@ -29,6 +31,7 @@ const ProductPage = () => {
             if (response.ok) {
                 const data = await response.json()
                 setProductDetails(data);
+                setShowLoader(false)
             }
         }
         catch (e) {
@@ -115,34 +118,36 @@ const ProductPage = () => {
         }
     }
     return (
-        <>
-            <ProductViewNav />
-            <div className="p-v-parent">
-                <div className="p-img-bg ">
-                    <div className="p-v-img">
-                        <img src={ProductImg} alt="Product Img" />
+        showLoader ? <Loader /> : (
+            <>
+                <ProductViewNav />
+                <div className="p-v-parent">
+                    <div className="p-img-bg ">
+                        <div className="p-v-img">
+                            <img src={ProductImg} alt="Product Img" />
+                        </div>
+                    </div>
+                    <div className="p-details-parent">
+                        <div className="p-d-name g-t ">
+                            <h2>{ProductTitle}</h2>
+                        </div>
+                        <div className="p-d-price g-t ">
+                            <span>${ProductPrice}/-</span>
+                        </div>
+                        <div className="p-d-qty">
+                            <span className="g-t">QTY:</span><i class="fa-solid fa-plus normal-icon " onClick={handleProductQtyIncrease}></i> <span id="qty-num-p-v">{ProductQty}</span> <i class="fa-solid fa-minus normal-icon" onClick={handleProductQtyDecrease}></i>
+                        </div>
+                        <div className="p-d-btns-parent ">
+                            <button className="p-v-buynow" onClick={HandleBuyNow}>BUY NOW</button>
+                            <button className="p-v-cart" onClick={HandleCart}>CART</button>
+                        </div>
+                        <div className="p-d-description ">
+                            <p>{ProductDesc}</p>
+                        </div>
                     </div>
                 </div>
-                <div className="p-details-parent">
-                    <div className="p-d-name g-t ">
-                        <h2>{ProductTitle}</h2>
-                    </div>
-                    <div className="p-d-price g-t ">
-                        <span>${ProductPrice}/-</span>
-                    </div>
-                    <div className="p-d-qty">
-                        <span className="g-t">QTY:</span><i class="fa-solid fa-plus normal-icon " onClick={handleProductQtyIncrease}></i> <span id="qty-num-p-v">{ProductQty}</span> <i class="fa-solid fa-minus normal-icon" onClick={handleProductQtyDecrease}></i>
-                    </div>
-                    <div className="p-d-btns-parent ">
-                        <button className="p-v-buynow" onClick={HandleBuyNow}>BUY NOW</button>
-                        <button className="p-v-cart" onClick={HandleCart}>CART</button>
-                    </div>
-                    <div className="p-d-description ">
-                        <p>{ProductDesc}</p>
-                    </div>
-                </div>
-            </div>
-        </>
+            </>
+        )
     )
 }
 

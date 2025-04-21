@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Notification from "../Notfication";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
 import '../utils/utility.css'
+import Loader from "../utils/Loader";
 // import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const UserCart = () => {
@@ -12,6 +13,7 @@ const UserCart = () => {
     const [checkedProducts, setCheckedProducts] = useState({});
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [notificationMessage, setnotificationMessage] = useState("");
+    const [showLoader, setShowLoader] = useState(true);
     const navigate = useNavigate();
 
     const fetchCart = async () => {
@@ -24,9 +26,11 @@ const UserCart = () => {
                 },
                 body: JSON.stringify({ username: userName }),
             });
-
-            const data = await response.json();
-            setCartProducts(data.products || []);
+            if (response.ok) {
+                const data = await response.json();
+                setCartProducts(data.products || []);
+                setShowLoader(false)
+            }
         } catch (err) {
             console.error("Error fetching cart:", err);
         }
@@ -170,59 +174,61 @@ const UserCart = () => {
         navigate('/checkout');
     };
     return (
-        <>
-            <div className="user-cart">
-                <div className="header">
-                    <h1 className="g-t">MY CART</h1>
-                </div>
-                <div className="cart-container">
-                    {cartProducts.length != 0 ? (
-                        cartProducts.map((product, index) => (
-                            <div key={index} className="cart-product">
-                                <div className="cart-product-img">
-                                    <img src={`${product.image}`} alt={product.name} />
-                                </div>
-                                <div className="product-details">
-                                    <h2>${product.price}/-</h2>
-                                    <h2>{product.name}</h2>
-                                    <span id="qty">
-                                        <span>
-                                            QTY:
+        showLoader ? <Loader /> : (
+            <>
+                <div className="user-cart">
+                    <div className="header">
+                        <h1 className="g-t">MY CART</h1>
+                    </div>
+                    <div className="cart-container">
+                        {cartProducts.length != 0 ? (
+                            cartProducts.map((product, index) => (
+                                <div key={index} className="cart-product">
+                                    <div className="cart-product-img">
+                                        <img src={`${product.image}`} alt={product.name} />
+                                    </div>
+                                    <div className="product-details">
+                                        <h2>${product.price}/-</h2>
+                                        <h2>{product.name}</h2>
+                                        <span id="qty">
+                                            <span>
+                                                QTY:
+                                            </span>
+                                            <i className="fa-solid fa-plus" id="increment" onClick={() => incrementQuantity(product.name, product.qty)}></i>
+                                            <span className="qty-number">{product.qty}</span>
+                                            <i className="fa-solid fa-minus" id="decrement" onClick={() => decreamentQuantity(product.name)}></i>
                                         </span>
-                                        <i className="fa-solid fa-plus" id="increment" onClick={() => incrementQuantity(product.name, product.qty)}></i>
-                                        <span className="qty-number">{product.qty}</span>
-                                        <i className="fa-solid fa-minus" id="decrement" onClick={() => decreamentQuantity(product.name)}></i>
-                                    </span>
+                                    </div>
+                                    <div className="select-delete-container">
+                                        <img src="/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
+                                        <input
+                                            type="checkbox"
+                                            id="product-check"
+                                            onChange={(e) => handleCheckboxChange(e, product.name, product.price, product.qty)}
+                                            checked={checkedProducts[product.name] || false}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="select-delete-container">
-                                    <img src="/assets/delete-logo.svg" alt="bin" onClick={() => deleteProduct(product.name, product.price)} />
-                                    <input
-                                        type="checkbox"
-                                        id="product-check"
-                                        onChange={(e) => handleCheckboxChange(e, product.name, product.price, product.qty)}
-                                        checked={checkedProducts[product.name] || false}
-                                    />
-                                </div>
-                            </div>
-                        ))
-                    ) : <h1 className="default-cart-message">No Products In Cart</h1>
-                    }
+                            ))
+                        ) : <h1 className="default-cart-message">No Products In Cart</h1>
+                        }
 
-                </div>
-
-                <div className="checkout-box">
-                    <div className="subtotal-price">
-                        <span id="subtotal">SUBTOTAL: ${subtotal.toFixed(2)}/-</span>
                     </div>
-                    <div className="checkout-btn-container">
-                        <button type="button" className="checkout-btn" onClick={handleCheckout}>
-                            CHECKOUT
-                        </button>
+
+                    <div className="checkout-box">
+                        <div className="subtotal-price">
+                            <span id="subtotal">SUBTOTAL: ${subtotal.toFixed(2)}/-</span>
+                        </div>
+                        <div className="checkout-btn-container">
+                            <button type="button" className="checkout-btn" onClick={handleCheckout}>
+                                CHECKOUT
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {notificationMessage && <Notification message={notificationMessage} />}
-        </>
+                {notificationMessage && <Notification message={notificationMessage} />}
+            </>
+        )
 
     );
 };

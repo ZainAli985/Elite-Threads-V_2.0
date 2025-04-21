@@ -3,10 +3,12 @@ import './TrackingPage.css'
 import { useNavigate } from "react-router-dom";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
 import '../utils/utility.css'
+import Loader from "../utils/Loader";
 
 function TrackingPage() {
     const [OrderedProducts, setOrderedProducts] = useState([]);
-    const [netTotal, setnetTotal] = useState('')
+    const [netTotal, setnetTotal] = useState('');
+    const [showLoader, setShowLoader] = useState(true);
     const navigate = useNavigate()
     function navigateHome() {
         navigate('/home')
@@ -26,7 +28,8 @@ function TrackingPage() {
             if (response.ok) {
                 // console.log(data);
                 setOrderedProducts(data.OrderedProducts);
-                setnetTotal(data.NetTotal)
+                setnetTotal(data.NetTotal);
+                setShowLoader(false);
             }
         }
         catch (err) {
@@ -38,11 +41,12 @@ function TrackingPage() {
         FetchUserOrders();
     }, [])
     return (
+        showLoader ? <Loader/> : (
         <>
             <div className="tracking-header">
                 <img src="/assets/Logo.png" alt="" onClick={navigateHome} />
                 <div className="net-total-container">
-                    <h2 className="g-t">NET TOTAL<sub>(Incl Tax)</sub> : ${netTotal}/-</h2>
+                    <h2 className="g-t">NET TOTAL<sub>(Incl Tax)</sub> : ${netTotal.toFixed(2)}/-</h2> 
                 </div>
             </div>
 
@@ -74,6 +78,7 @@ function TrackingPage() {
                 )}
             </div>
         </>
+        )
     )
 }
 
