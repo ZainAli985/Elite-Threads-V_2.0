@@ -58,7 +58,7 @@ function TrackingPage() {
                     OrderedProducts.map((order, index) => (
                         <div className="orders-container" key={index}>
                             <div className="p-img">
-                                <img src={`http://39.52.37.193:3000${order.image}`} alt={order.name} />
+                                <img src={`http://127.0.0.1:3000${order.image}`} alt={order.name} />
                             </div>
 
                             <div className="p-details">

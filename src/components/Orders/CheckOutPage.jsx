@@ -39,7 +39,6 @@ function CheckoutPage() {
             const data = await response.json();
             if (response.ok) {
                 setnotificationMessage("Placing Order! Please Be Patient");
-
                 setTimeout(() => {
                     setnotificationMessage('');
                     navigate('/orderconfirmation');
@@ -131,8 +130,4 @@ function CheckoutPage() {
                 </div>
             </div>
             {notificationMessage && <Notification message={notificationMessage} />}
-        </>
-    );
-}
-
-export default CheckoutPage;
+      

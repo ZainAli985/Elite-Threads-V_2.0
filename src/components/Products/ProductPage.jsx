@@ -7,7 +7,6 @@ import API_BASE_URL from "../../../config/ApiBaseUrl";
 import Loader from '../utils/Loader.jsx'
 const ProductPage = () => {
 
-    const navigate = useNavigate();
     const product_id = useParams();
     const [ProductDetailsObj, setProductDetails] = useState();
     const [ProductTitle, setProductTitle] = useState('');

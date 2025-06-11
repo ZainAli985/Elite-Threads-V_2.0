@@ -3060,3 +3060,29 @@ async function connectDB() {
 // connectToDatabase();
 
 export default connectDB;
+
+
+  // Subtotal Function
+    // const updateSubtotal = () => {
+    //     let newSubtotal = 0;
+    //     cartProducts.forEach(product => {
+    //         if (checkedProducts[product.name]) {
+    //             newSubtotal += product.price * product.qty;
+    //         }
+    //     });
+    //     setSubtotal(newSubtotal);
+    // };
+    // // LIVE SERVER CALLS 
+    // useEffect(() => {
+    //     updateSubtotal();
+    // }, [cartProducts, checkedProducts]);
+
+
+
+
+    // Check Box And Checked Products Handling 
+    // const handleCheckboxChange = (e, productName) => {
+    //     const isChecked = e.target.checked;
+    //     setCheckedProducts((prevProducts) => ({ ...prevProducts, [productName]: isChecked }));
+    //     console.log(checkedProducts)
+    // };

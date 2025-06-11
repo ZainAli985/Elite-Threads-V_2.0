@@ -5,17 +5,17 @@ import Notification from "../Notfication";
 import API_BASE_URL from "../../../config/ApiBaseUrl";
 import '../utils/utility.css'
 import Loader from "../utils/Loader";
-// import '@fortawesome/fontawesome-free/css/all.min.css';
 
 const UserCart = () => {
+    const userName = localStorage.getItem('username');
     const [cartProducts, setCartProducts] = useState([]);
+    const [selectedProducts, setselectedProducts] = useState([]);
     const [subtotal, setSubtotal] = useState(0);
-    const [checkedProducts, setCheckedProducts] = useState({});
-    const [selectedProducts, setSelectedProducts] = useState([]);
     const [notificationMessage, setnotificationMessage] = useState("");
     const [showLoader, setShowLoader] = useState(true);
     const navigate = useNavigate();
 
+    // Fetching Cart Data From Server  (Fetches Basic Cart Products To Show Case Them)
     const fetchCart = async () => {
         try {
             const userName = localStorage.getItem('username');
@@ -29,7 +29,7 @@ const UserCart = () => {
             if (response.ok) {
                 const data = await response.json();
                 setCartProducts(data.products || []);
-                setShowLoader(false)
+                setShowLoader(false);
             }
         } catch (err) {
             console.error("Error fetching cart:", err);
@@ -39,6 +39,7 @@ const UserCart = () => {
         fetchCart();
     }, []);
 
+    // Deleting Product Request Using Username And Product Details (Optimized By Server Use)
     const deleteProduct = async (productName, price) => {
         try {
             const userName = localStorage.getItem('username');
@@ -52,14 +53,14 @@ const UserCart = () => {
 
             const data = await response.json();
             if (response.ok) {
+                const UpdatedCart = data.UpdatedCart;
                 setnotificationMessage(data.message);
                 setTimeout(() => {
                     setnotificationMessage('')
                 }, 6000);
-                setCartProducts((prevProducts) => {
-                    const updatedProducts = prevProducts.filter((product) => product.name !== productName);
-                    return updatedProducts;
-                });
+                if (UpdatedCart) {
+                    setCartProducts(UpdatedCart);
+                }
                 setSubtotal((prevSubtotal) => prevSubtotal - price);
             } else {
                 console.error(`Error: ${data.message}`);
@@ -68,111 +69,113 @@ const UserCart = () => {
             console.error("Error deleting product:", err);
         }
     };
-    // DIVIDING FUNCTIONS SEPERATELY SO THAT FRONTEND AND BACKEND CAN WORK SEPERATE AVOIDING UI BUGS
-    const CartProductQuantity = async (productName, action) => {
 
-
+    // Increament/Decreament Qty Function (Optimized)
+    const increaseqty = async (productName, productPrice) => {
         try {
-            const userName = localStorage.getItem('username');
-            const response = await fetch(`${API_BASE_URL}/${action}qty`, {
+            const response = await fetch(`${API_BASE_URL}/increaseqty`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username: userName, productName: productName }),
+                body: JSON.stringify({ userName: userName, productName: productName })
+            });
+            setCartProducts((prevProducts) => prevProducts.map(product =>
+                product.name === productName ? { ...product, qty: product.qty + 1 } :
+                    product
+            ));
+            // Change Subtotal Only For Selected Products 
+            const selectedProduct = selectedProducts.find((product) => product.name === productName);
+            if (selectedProduct && selectedProduct != undefined && selectedProduct != null) {
+                setSubtotal((prevSub) => prevSub + productPrice);
+            }
+        } catch (err) {
+            console.error(err);
+        }
+
+    };
+    const decreaseqty = async (productName, productPrice) => {
+
+        try {
+            const response = await fetch(`${API_BASE_URL}/decreaseqty`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ userName: userName, productName: productName })
             });
             if (response.ok) {
-                const data = await response.json();
-                // console.log(data.message);
-                //  fetchCart();
+                setCartProducts((prevProducts) => prevProducts.map(product =>
+                    product.name === productName ? { ...product, qty: product.qty > 1 ? product.qty - 1 : product.qty } :
+                        product
+                ));
+                // Change Subtotal Only For Selected Products 
+                const selectedProduct = selectedProducts.find((product) => product.name === productName);
+                if (selectedProduct && selectedProduct != undefined && selectedProduct != null) {
+                    setSubtotal((prevSub) => prevSub - productPrice);
+                }
             }
-
+        } catch (err) {
+            console.error(err);
         }
-        catch (err) {
-            console.error("Error incrementing quantity:", err);
-        }
-    };
-    // SEPERATE UI FUNCTIONS 
-    const updateSubtotal = () => {
-        let newSubtotal = 0;
-        cartProducts.forEach(product => {
-            if (checkedProducts[product.name]) {
-                newSubtotal += product.price * product.qty;
-            }
-        });
-        setSubtotal(newSubtotal);
-    };
-    // SUBTOTAL LIVE CALL 
-    useEffect(() => {
-        updateSubtotal();
-    }, [cartProducts, checkedProducts]);
 
-    // SEMICOLONS AND FUNCTION BRACKETS IN MAP THING END RE CHECK PERMISSIONS 
-    const incrementQuantity = (productName) => {
-        setCartProducts((prevProducts) =>
-            prevProducts.map((product) =>
-                product.name === productName ? { ...product, qty: product.qty + 1 } : product
-
-            )
-        );
-        CartProductQuantity(productName, 'increase');
     };
-    const decreamentQuantity = (productName) => {
-        setCartProducts((prevProducts) =>
-            prevProducts.map((product) =>
-                product.name === productName && product.qty > 1 ? { ...product, qty: product.qty - 1 } : product
-            )
-        );
-        CartProductQuantity(productName, 'decrease');
-    };
-    const handleCheckboxChange = (e, productName) => {
+    // Checked Unchecked Products (W.R.T SUBTOTAL AND SELECTED PRODUCTS LOGIC)
+    const handleCheck = (e, Product) => {
         const isChecked = e.target.checked;
-        setCheckedProducts((prevProducts) => ({ ...prevProducts, [productName]: isChecked }));
-    }
-    // Checkout Page Handling 
-    const SendCheckedOutProducts = async (selectedProducts) => {
+        if (isChecked) {
+            setselectedProducts((prevProducts) =>
+                [...prevProducts, Product]
+            );
+            setSubtotal((prevSub) => prevSub + Product.price * Product.qty);
+        } else {
+            setselectedProducts((prev) =>
+                prev.filter(p => p.name !== Product.name)
+            );
+            setSubtotal((prevSub) => prevSub - Product.price * Product.qty);
+        }
+    };
+    // Sends Selected Products To Backend For Further Proceedings 
+    const SendCheckedOutProducts = async (FilteredCheckedOutProducts) => {
         try {
             const userName = localStorage.getItem('username');
-            console.log("Sending Checkout Products to API:", selectedProducts);
             const response = await fetch(`${API_BASE_URL}/checkout`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ username: userName, products: selectedProducts }),
+                body: JSON.stringify({ username: userName, products: FilteredCheckedOutProducts }),
             });
             if (response.ok) {
                 const data = await response.json();
-                // console.log(data.message);
             }
         }
         catch (err) {
             console.error("Error checking out:", err);
         }
     };
+    // PUSHSES FINAL CHECKED PRODUCTS INTO AN ARRAY BY FILTERING THEM FOR USEFUL INFO 
     const handleCheckout = () => {
-        const selectedProducts = [];
-        cartProducts.forEach(product => {
-            if (checkedProducts[product.name]) {
-                selectedProducts.push({
-                    name: product.name,
-                    price: product.price,
-                    qty: product.qty,
-                    total: product.price * product.qty, //PASSING IT FOR TOTAL ON CHECKOUT PAGE YEAAAAHHHH GOOOD MIIINNNNDDDD
-                    product_id: product.product_id,
-                    image: product.image,
-                    status: product.status
-                });
-            }
+        const FilteredCheckedOutProducts = [];
+        selectedProducts.forEach(product => {
+            FilteredCheckedOutProducts.push({
+                image: product.image,
+                product_id: product.product_id,
+                name: product.name,
+                price: product.price,
+                qty: product.qty,
+                total: product.price * product.qty,
+                status: product.status /*It'll automatically go for default in the backend*/
+            });
         });
-        if (selectedProducts.length === 0) {
+        if (selectedProducts.length === 0) {  /*Zero || Null Error Handling*/ 
             alert('SELECT ATLEAST  ONE PRODUCT TO CHECKOUT');
             return;
         }
-        setSelectedProducts(selectedProducts);
-        SendCheckedOutProducts(selectedProducts);
+        SendCheckedOutProducts(FilteredCheckedOutProducts); //API FUNCTION CALL
         navigate('/checkout');
     };
+
     return (
         showLoader ? <Loader /> : (
             <>
@@ -194,9 +197,9 @@ const UserCart = () => {
                                             <span>
                                                 QTY:
                                             </span>
-                                            <i className="fa-solid fa-plus" id="increment" onClick={() => incrementQuantity(product.name, product.qty)}></i>
+                                            <i className="fa-solid fa-plus" id="increment" onClick={() => increaseqty(product.name, product.price)}></i>
                                             <span className="qty-number">{product.qty}</span>
-                                            <i className="fa-solid fa-minus" id="decrement" onClick={() => decreamentQuantity(product.name)}></i>
+                                            <i className="fa-solid fa-minus" id="decrement" onClick={() => decreaseqty(product.name, product.price)}></i>
                                         </span>
                                     </div>
                                     <div className="select-delete-container">
@@ -204,17 +207,14 @@ const UserCart = () => {
                                         <input
                                             type="checkbox"
                                             id="product-check"
-                                            onChange={(e) => handleCheckboxChange(e, product.name, product.price, product.qty)}
-                                            checked={checkedProducts[product.name] || false}
+                                            onChange={(e) => handleCheck(e, product)}
                                         />
                                     </div>
                                 </div>
                             ))
                         ) : <h1 className="default-cart-message">No Products In Cart</h1>
                         }
-
                     </div>
-
                     <div className="checkout-box">
                         <div className="subtotal-price">
                             <span id="subtotal">SUBTOTAL: ${subtotal.toFixed(2)}/-</span>
@@ -226,10 +226,9 @@ const UserCart = () => {
                         </div>
                     </div>
                 </div>
-                {notificationMessage && <Notification message={notificationMessage} />}
+                {notificationMessage && <Notification message={notificationMessage} />} {/*Notification Element*/}
             </>
         )
-
     );
 };
 

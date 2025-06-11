@@ -12,6 +12,7 @@ const ProductForm = () => {
     const [desc, setDesc] = useState('');
     const [category, setCategory] = useState('');
     const [notificationMessage, setnotificationMessage] = useState("");
+    const categories = ['EXECUTIVE SERIES', 'CEO COLLECTION', 'ELITE EXCLUSIVE', 'TAILORED PRESTIGED', 'TIMELESS CLASSICS', 'ROYAL HERITAGE']
 
      // Limited Timeout For Notification
      const showNotification = (message) => {
@@ -75,7 +76,7 @@ const ProductForm = () => {
                 <form onSubmit={handleSubmit} id="panelform">
                     <div className="panelcategories">
                         <h4>CATEGORY</h4>
-                        {['EXECUTIVE SERIES', 'CEO COLLECTION', 'ELITE EXCLUSIVE', 'TAILORED PRESTIGED', 'TIMELESS CLASSICS', 'ROYAL HERITAGE'].map((categoryOption) => (
+                        {categories.map((categoryOption) => (
                             <div
                                 key={categoryOption}
                                 className={`paneloption ${category === categoryOption ? 'selected' : ''}`}
