@@ -130,4 +130,6 @@ function CheckoutPage() {
                 </div>
             </div>
             {notificationMessage && <Notification message={notificationMessage} />}
-      
+      </>
+    )
+}
