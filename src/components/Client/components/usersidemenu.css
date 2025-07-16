@@ -1,0 +1,41 @@
+.user-side-menu {
+  /* border: 2px solid red; */
+  display: inline-flex;
+      flex-direction: column;
+      gap: 5vw;
+      height: 40vh;
+      justify-content: center;
+      padding: 1vw;
+      position: absolute;
+      z-index: +1;
+      box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+      border-bottom-right-radius: 2vw;
+      border-top-right-radius: 2vw;
+      top: 65%;
+      left: 0;
+      transform: translateY(-50%); 
+}
+.user-side-menu a {
+  text-decoration: none;
+  color: white;
+  font-family: Junge, serif;
+  font-size: 2vw;
+  gap: 1vw;
+}
+.user-side-menu a:hover {
+  background: linear-gradient(
+    to right,
+    #534c38,
+    #b9a97c,
+    #574f3a,
+    #b6a67a,
+    #59513c,
+    #b4a478
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.user-side-menu a img{
+    height: 2vw;
+}

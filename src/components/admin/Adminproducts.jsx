@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import "./products.css";
 import API_BASE_URL from '../../../config/ApiBaseUrl.js';
+import Notification from "../Notfication.jsx";
 
 const AdminProducts = () => {
   const [products, setProducts] = useState([]);
-  const [notification, setNotification] = useState("");
+  const [notificationMessage, setnotificationMessage] = useState("");
 
   // Fetch products from the API
   const getProducts = async () => {
@@ -14,16 +15,16 @@ const AdminProducts = () => {
       setProducts(data.products || []); // Set products from the API response
     } catch (e) {
       console.error("Error fetching products:", e);
-      showNotification("Error fetching products. Please try again.");
+      setnotificationMessage("Error fetching products. Please try again.");
     }
   };
 
   // Show notification for a limited time
   const showNotification = (message) => {
-    setNotification(message);
+    setnotificationMessage(message);
     setTimeout(() => {
-      setNotification(""); // Clear the notification after 3 seconds
-    }, 3000);
+      setnotificationMessage(""); // Clear the notification after 3 seconds
+    }, 6000);
   };
 
   // Handle product deletion
@@ -60,11 +61,11 @@ const AdminProducts = () => {
   return (
     <div className="admin-products-container">
       {/* Notification div */}
-      {notification && <div className="notification">{notification}</div>}
+      {notificationMessage && <Notification message={notificationMessage} />}
 
       {/* Message if no products are available */}
       {products.length === 0 ? (
-        <h3 className="no-products-message">No products available to display.</h3>
+        <h3 className="no-products-message">No Products Available To Display.</h3>
       ) : (
         <div className="products-container">
           {products.map((product, index) => (
@@ -74,7 +75,7 @@ const AdminProducts = () => {
               onClick={() => deleteProduct(product.name)}
             >
               <div className="product-img">
-                <img src={`http://39.52.37.193:3000${product.image}`} alt={product.name} />
+                <img src={`${product.image}`} alt={product.name} />
               </div>
               <div className="product-info">
                 <div className="price">

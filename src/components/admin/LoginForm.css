@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
+.form{
+    
+    /* border: 2px solid red; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 10vw;
+}
+
+.text-box{
+    /* border: 2px solid blue;  */
+    display: flex;
+    font-family: "Junge", serif;
+    align-items: center;
+    gap: 1vw;   
+}
+.text-box h1{
+   color: #DDC88A;
+    font-size: 2vw;
+}
+.loginicon{
+    /* border: 2px solid rgb(0, 0, 0); */
+    height: auto;
+    width: 4vw;
+}
+.loginicon img{
+   width: 100%;
+   object-fit: cover;
+}
+#RegisterForm{
+    /* border: 2px solid green; */
+    display: flex;
+    flex-direction: column;
+    width:50vw;
+    align-items: center;
+}    
+.inputs{
+    border: none;
+    margin: 1vw;
+    padding: 1.2vw;
+    border-radius: 1vw;
+    text-align: center;
+    width: 30vw;
+    background: linear-gradient(130deg, #7D7254, #A79970, #B9A97C, #E3CF99);
+    font-family: "Junge", serif;
+    color: white; 
+    font-size: 2vw;
+    outline: none;
+} 
+#RegisterForm input::placeholder{
+    color: white;
+}
+.RegisterBtn{
+    border: none;
+    margin: 1vw;
+    padding: 1.2vw;
+    border-radius: 1vw;
+    text-align: center;
+    width: 15vw;
+    background: linear-gradient(130deg, #7D7254, #A79970, #B9A97C, #E3CF99);
+    font-family: "Junge", serif;
+    color: white; 
+    font-size: 2vw;
+}
+
+
+
+/* background-color: gradient(90deg, #7D7254,#A79970,#B9A97C,#E3CF99); */
+
+
+
+
+/* Add these styles to your LoginForm.css or a separate CSS file */
+.notification {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: rgb(210 192 141);
+    font-weight: bold;
+    z-index: 1000;
+    max-width: 400px;
+    width: 90%;
+    text-align: center;
+    font-family: "Junge", serif;
+}
+
+.notification.success {
+    background-color: #001845; /* Green for success */
+}
+
+.notification.error {
+    background-color: #f70101; /* Red for error */
+}

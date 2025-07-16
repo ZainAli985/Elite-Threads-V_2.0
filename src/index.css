@@ -11,5 +11,9 @@ body{
     /* background-size: cover; */
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
+    z-index: -1;  /*Because Of Malfunction At Product View Due To DropDown*/
 }
-
+body::-webkit-scrollbar{
+    display: none;
+}

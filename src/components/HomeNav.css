@@ -1,10 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Junge&display=swap');
-body{
+
+body {
     /* background: linear-gradient(170deg, #050F26, #06122F, #0A1F4F, #12378C); */
     background-size: cover;
     background-repeat: no-repeat;
 }
-#nav{
+
+#nav {
     /* border: 2px solid red; */
     display: flex;
     justify-content: space-between;
@@ -13,26 +15,26 @@ body{
     z-index: +1;
 }
 
-.logo{
+.logo {
     /* border: 2px solid green; */
     /* height: 15vw; */
     width: auto;
     display: flex;
 }
 
-.logo img{
+.logo img {
     width: 20%;
     position: absolute;
     cursor: pointer;
 }
 
-.essential-box{
+.essential-box {
     display: flex;
     /* border: 2px solid white; */
     align-items: center;
 }
 
-.search{
+.search {
     /* border: 2px solid greenyellow; */
     display: flex;
     align-items: center;
@@ -40,10 +42,11 @@ body{
     font-family: "Junge", serif;
 }
 
-.search input{
+.search input {
     border: 2px solid white;
     outline: none;
     padding: 1vw;
+    font-size: 1vw;
     margin: 1vw;
     border-radius: 0.5vw;
     width: 20vw;
@@ -51,33 +54,42 @@ body{
     background: transparent;
     color: white;
 }
-.search input::placeholder{
+
+.search input::-webkit-search-cancel-button {
+    appearance: none;
+}
+
+.search input::placeholder {
     color: white;
     font-family: "Junge", serif;
     font-size: 1vw;
 }
-.search img{
+
+.search img {
     height: auto;
     width: 2vw;
 }
-.search img:hover{
+
+.search img:hover {
     cursor: pointer;
 }
 
-.cart{
+.cart {
     /* border: 2px solid purple; */
-    margin: 0.5vw;
-    padding: 0.5vw;
+    margin-right: 2vw;
+    padding: 1vw;
 }
-.cart img{
+
+.cart img {
     height: auto;
-    width: 2.5vw;
+    width: 3vw;
 }
-.cart img:hover{
+
+.cart img:hover {
     cursor: pointer;
 }
 
-.product-header{
+.product-header {
     /* border: 2px solid blue; */
     display: flex;
     padding-top: 15vw;
@@ -86,14 +98,107 @@ body{
     align-items: flex-end;
     font-family: "Junge", serif;
 }
-.product-header h1{
+
+.product-header h1 {
     margin: 0;
     font-size: 3vw;
     color: #847447;
     padding-right: 5vw;
 }
 
-.hr{
+.hr {
     width: 100%;
     position: absolute;
+}
+@media screen and (min-width: 1800px) {
+    .search input {
+        border: 6px solid white;
+        outline: none;
+        /* padding: 1.5vw; */
+        margin: 1vw;
+        border-radius: 0.5vw;
+        width: 30vw;
+        font-family: "Junge", serif;
+        background: transparent;
+        color: white;
+    }
+
+    .search input::placeholder {
+        font-size: 1.5vw;
+    }
+    
+}
+
+@media screen and (max-width: 768px) {
+    .search input {
+        border: 1px solid white;
+        outline: none;
+        padding: 0.7vw;
+        margin: 1vw;
+        border-radius: 0.5vw;
+        width: 25vw;
+        font-family: "Junge", serif;
+        background: transparent;
+        color: white;
+    }
+
+    
+}
+
+@media screen and (max-width: 450px) {
+    .search input {
+        border: 1px solid white;
+        outline: none;
+        /* padding: 1vw; */
+        margin: 1vw;
+        border-radius: 1vw;
+        width: 30vw;
+        font-family: "Junge", serif;
+        background: transparent;
+        color: white;
+        font-size: 2vw;
+    }
+
+    .search input::placeholder {
+        font-size: 1.5vw;
+        padding: 1vw;
+    }
+
+    .cart img {
+        width: 3.5vw;
+    }
+
+    .search img {
+        width: 3vw;
+    }
+
+}
+
+@media screen and (max-width: 375px) {
+    .cart img {
+        object-fit: cover;
+        width: 15px;
+    }
+
+    .search img {
+        width: 12px;
+    }
+
+    .search input {
+        border: 1px solid white;
+        outline: none;
+        padding: 1vw;
+        margin: 1.5vw;
+        border-radius: 1vw;
+        width: 40vw;
+        font-family: "Junge", serif;
+        background: transparent;
+        color: white;
+        font-size: 2vw;
+    }
+
+    .search input::placeholder {
+        font-size: 2.2vw;
+    }
+
 }

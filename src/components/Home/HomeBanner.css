@@ -1,0 +1,120 @@
+body {
+    overflow-x: hidden; 
+}
+
+.banner {
+    background: url('/assets/HomeBg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 67vw; 
+    overflow: hidden;
+}
+
+.banner-content {
+    display: flex;
+    position: relative;
+    height: 100%;
+    justify-content: space-around;
+    overflow: hidden; /* Prevent animation overflow */
+}
+
+.text {
+    display: inline-flex;
+    height: 50vw;
+    width: auto;
+    padding: 25vw 0 0 0vw;
+    animation: slideInLeft 2s ease-out forwards;
+}
+
+.text img {
+    object-fit: cover;
+    width: auto;
+    height: 60%;
+}
+
+.model-img {
+    display: flex;
+    animation: slideInRight 2s ease-out forwards;
+    padding-top: 10vw;
+    position: relative;
+}
+
+.model-img img {
+    object-fit: cover;
+    max-height: 100%; /* Prevents vertical scroll */
+}
+
+/* Keyframes for left-to-right animation */
+@keyframes slideInLeft {
+    from {
+        transform: translateX(-10vw); /* Use viewport width instead of percentage */
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Keyframes for right-to-left animation */
+@keyframes slideInRight {
+    from {
+        transform: translateX(10vw); /* Avoid pushing the page */
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* Sliding out */
+@keyframes slideOutLeft {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(-10vw);
+        opacity: 0;
+    }
+}
+
+@keyframes slideOutRight {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(10vw);
+        opacity: 0;
+    }
+}
+
+/* Utility classes */
+.slide-in-left {
+    animation: slideInLeft 1.2s ease-in forwards;
+}
+
+.slide-out-left {
+    animation: slideOutLeft 2s ease-out forwards;
+}
+
+.slide-in-right {
+    animation: slideInRight 1.2s ease-out forwards;
+}
+
+.slide-out-right {
+    animation: slideOutRight 2s ease-out forwards;
+}
+.hr{
+    height: 3px;
+    background-color: #a18e5c;
+    border: none
+}
+@media screen and (max-width: 650px) {
+
+   .hr{
+    height: 1px;
+   }
+}

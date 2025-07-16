@@ -84,15 +84,19 @@ export const DelteCartProducts = async (req, res) => {
                 message: `User Invalid`
             });
         }
-        else {
-            const UpdateCart = await User.updateOne(
-                { username: userName },
-                { $pull: { 'cart.products': { name: productName } } }
-            )
-            res.status(200).json({
-                message: 'Product Deleted Successfully'
-            });
-        }
+        const UpdateCart = await User.updateOne(
+            { username: userName },
+            { $pull: { 'cart.products': { name: productName } } }
+        )
+
+        const UpdatedUser = await User.findOne({ username: userName });
+
+
+        res.status(200).json({
+            message: 'Product Deleted Successfully',
+            UpdatedCart: UpdatedUser.cart.products,
+            message2: "HELLOO THIS IS WORKING"
+        });
     }
     catch (err) {
         res.json({
@@ -103,7 +107,7 @@ export const DelteCartProducts = async (req, res) => {
 
 export const increaseCartQuantity = async (req, res) => {
     try {
-        let { username: userName, productName: productName } = req.body;
+        let { userName: userName, productName: productName } = req.body;
         let foundUser = await User.findOne({ username: userName }); //REQUIREMENT 
         if (!foundUser) {
             res.status(404).json({
@@ -134,40 +138,78 @@ export const increaseCartQuantity = async (req, res) => {
 };
 export const decreaseCartQuantity = async (req, res) => {
     try {
-        let { username: userName, productName: productName } = req.body;
+        let { userName: userName, productName: productName } = req.body;
         let foundUser = await User.findOne({ username: userName });
         if (!foundUser) {
-            res.status(404).json({
+           return res.status(404).json({
                 message: `User Not Found`
             });
-        }
+        };
 
-        let productInCart = foundUser.cart.products.find(product => product.name === productName);
+        let productInCart =  foundUser.cart.products.find(product => product.name === productName);
 
-        if (productInCart.qty != 0 && productInCart.qty != 1) { //This is to prevent the quantity from going below 0 Or Zero
-            if (productInCart) {
-                productInCart.qty -= 1;
-                res.status(200).json({
-                    message: 'Quantity Updated Successfully'
-                });
-            } else {
-                res.status(404).json({
-                    message: `Product Not Found`
-                });
-            }
+        if (productInCart && productInCart.qty != 0 && productInCart.qty != 1) { //This is to prevent the quantity from going below 0 Or Zero
+            productInCart.qty -= 1;
+            await foundUser.save(); //THISSSSSSS ISSSSSSS IMMMMMPOOOORRRRTTTTAAAAANTTTTTAAA!
+
+           return res.status(200).json({
+                message: 'Quantity Updated Successfully'
+            });
+
         }
         else {
-            productInCart.qty = 1;
-            res.status(200).json({
-                message: 'Quantity Updated Successfully 0000'
+          return  res.status(423).json({
+                message: `Product Not Found || Can't Update Quantity`
             });
         }
-        foundUser.save(); //THISSSSSSS ISSSSSSS IMMMMMPOOOORRRRTTTTAAAAANTTTTTAAA!
 
     }
     catch (err) {
-        res.json({
+       return res.json({
             message: `Error Updating Product Quantity ${err}`
         });
     }
 };
+
+// For Product Display Page 
+export const ProductPageCartHandler = async (req, res) => {
+    try {
+        const { ProductName: ProductTitle, username: Username, productqty: ProductQty } = req.body;
+
+        const foundProduct = await Product.findOne({ name: ProductTitle });
+
+        if (!foundProduct) {
+            res.status(404).json({
+                message: 'USER NOT FOUND'
+            })
+        }
+        const foundUser = await User.findOne({ username: Username });
+
+        if (!foundUser) {
+            res.status(404).json({
+                message: 'USER NOT FOUND'
+            })
+        }
+        let productInCart = foundUser.cart.products.find(product => product.name === ProductTitle);
+        if (productInCart) {
+            productInCart.qty += ProductQty;
+        }
+        else {
+            foundUser.cart.products.push({
+                product_id: foundProduct.product_id,
+                image: foundProduct.image,
+                name: foundProduct.name,
+                price: foundProduct.price,
+                desc: foundProduct.desc,
+                category: foundProduct.category,
+                qty: ProductQty
+            });
+        }
+
+        await foundUser.save();
+        res.status(200).json({ message: 'PRODUCT CREATED IN CART SUCCESSFULLY' })
+    }
+    catch (e) {
+        res.status(500).json({ message: `Server Error At Product View Controller${e}` })
+    }
+}

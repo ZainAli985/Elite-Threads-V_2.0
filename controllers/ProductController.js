@@ -1,7 +1,5 @@
 // controllers/productController.js
 import Product from '../models/product-model.js';
-import multer from 'multer';
-
 // Controller to handle creating a product
 
 
@@ -99,3 +97,29 @@ export const deleteProducts = async (req,res)=>{
         });
     }
 }
+
+export const ProductViewData = async (req,res)=>{
+    try{
+        const { product_id } = req.params;  //{} is used to extract a specific item from req.body
+
+        const showcase_product = await Product.findOne({product_id: product_id});
+
+        if(showcase_product){
+            res.status(200).json({
+                response: `Product Found. OK`,
+                showcase_product
+            });
+        }
+        else{
+            res.status(404).json({
+                message: `NOT FOUND`
+            })
+        }
+    }
+    catch(e){
+        res.status(500).json({
+            message: `Server Erorr In Product Data View ${e}`
+        })
+    }
+};
+

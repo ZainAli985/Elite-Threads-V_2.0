@@ -18,12 +18,13 @@ export const register = async (req, res) => {
         if (existingUser) {
             return res.status(400).json({ message: 'Username or Email already registered' });
         }
-
+        // User Id 
+        const UserCount = await User.countDocuments();
+        const user_id = UserCount + 1;
         // If not, create a new user
-        const newUser = new User({ username, email, password });
+        const newUser = new User({  username, email, password, user_id  });
         await newUser.save();
-
-        res.status(201).json({ message: 'User registered successfully', user: newUser });
+        res.status(201).json({ message: 'User registered successfully', user: newUser, user_id});
     } catch (error) {
         res.status(400).json({ message: 'Error registering user', error: error.message });
     }
